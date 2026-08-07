@@ -2,19 +2,19 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const integrations = [
-  { name: "GitHub", category: "Version Control" },
-  { name: "Slack", category: "Communication" },
-  { name: "Stripe", category: "Payments" },
+const technologies = [
+  { name: "Next.js", category: "React Framework" },
+  { name: "Flutter", category: "Mobile Development" },
+  { name: "Supabase", category: "Backend & Auth" },
+  { name: "TypeScript", category: "Language" },
+  { name: "Tailwind CSS", category: "Styling" },
+  { name: "Vercel", category: "Deployment" },
   { name: "PostgreSQL", category: "Database" },
-  { name: "Redis", category: "Cache" },
-  { name: "AWS", category: "Cloud" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Vercel", category: "Hosting" },
+  { name: "Git", category: "Version Control" },
   { name: "Figma", category: "Design" },
-  { name: "Linear", category: "Project Management" },
-  { name: "Notion", category: "Documentation" },
-  { name: "OpenAI", category: "AI/ML" },
+  { name: "Firebase", category: "Mobile Services" },
+  { name: "Dart", category: "Language" },
+  { name: "React", category: "UI Library" },
 ];
 
 export function IntegrationsSection() {
@@ -44,16 +44,16 @@ export function IntegrationsSection() {
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Integrations
+            Technologies
             <span className="w-8 h-px bg-foreground/30" />
           </span>
           <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
-            Works with everything
+            Built with the tools
             <br />
-            you already use.
+            we trust.
           </h2>
           <p className="text-xl text-muted-foreground">
-            200+ pre-built integrations. Connect your entire stack in minutes.
+            Every project ships on a modern, proven stack. Here&apos;s what powers the products we build.
           </p>
         </div>
 
@@ -64,15 +64,15 @@ export function IntegrationsSection() {
         <div className="flex gap-6 marquee">
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6 shrink-0">
-              {integrations.map((integration) => (
+              {technologies.map((tech) => (
                 <div
-                  key={`${integration.name}-${setIndex}`}
+                  key={`${tech.name}-${setIndex}`}
                   className="shrink-0 px-8 py-6 border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.02] transition-all duration-300 group"
                 >
                   <div className="text-lg font-medium group-hover:translate-x-1 transition-transform">
-                    {integration.name}
+                    {tech.name}
                   </div>
-                  <div className="text-sm text-muted-foreground">{integration.category}</div>
+                  <div className="text-sm text-muted-foreground">{tech.category}</div>
                 </div>
               ))}
             </div>
@@ -85,15 +85,15 @@ export function IntegrationsSection() {
         <div className="flex gap-6 marquee-reverse">
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6 shrink-0">
-              {[...integrations].reverse().map((integration) => (
+              {[...technologies].reverse().map((tech) => (
                 <div
-                  key={`${integration.name}-reverse-${setIndex}`}
+                  key={`${tech.name}-reverse-${setIndex}`}
                   className="shrink-0 px-8 py-6 border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.02] transition-all duration-300 group"
                 >
                   <div className="text-lg font-medium group-hover:translate-x-1 transition-transform">
-                    {integration.name}
+                    {tech.name}
                   </div>
-                  <div className="text-sm text-muted-foreground">{integration.category}</div>
+                  <div className="text-sm text-muted-foreground">{tech.category}</div>
                 </div>
               ))}
             </div>

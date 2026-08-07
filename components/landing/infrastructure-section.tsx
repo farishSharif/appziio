@@ -2,18 +2,18 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const locations = [
-  { city: "San Francisco", region: "US West", latency: "12ms" },
-  { city: "New York", region: "US East", latency: "18ms" },
-  { city: "London", region: "Europe", latency: "24ms" },
-  { city: "Tokyo", region: "Asia Pacific", latency: "32ms" },
-  { city: "Sydney", region: "Oceania", latency: "45ms" },
-  { city: "Sao Paulo", region: "South America", latency: "38ms" },
+const techStack = [
+  { name: "Next.js", category: "Frontend Framework" },
+  { name: "TypeScript", category: "Language" },
+  { name: "Tailwind CSS", category: "Styling" },
+  { name: "Supabase", category: "Backend & Database" },
+  { name: "Flutter", category: "Mobile Development" },
+  { name: "Vercel", category: "Deployment" },
 ];
 
 export function InfrastructureSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeLocation, setActiveLocation] = useState(0);
+  const [activeTech, setActiveTech] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function InfrastructureSection() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveLocation((prev) => (prev + 1) % locations.length);
+      setActiveTech((prev) => (prev + 1) % techStack.length);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -47,31 +47,31 @@ export function InfrastructureSection() {
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              Infrastructure
+              Tech Stack
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Global by
+              Modern tools.
               <br />
-              default.
+              Battle-tested stack.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-              Deploy once, run everywhere. Our edge network spans 17 data centers 
-              across 6 continents, delivering sub-50ms latency to 99% of the world.
+              We pick the right tools for the job — and we&apos;ve narrowed it down to a 
+              stack we trust in production. Every project ships on this foundation.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8">
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">17</div>
-                <div className="text-sm text-muted-foreground">Data centers</div>
+                <div className="text-4xl lg:text-5xl font-display mb-2">Next.js</div>
+                <div className="text-sm text-muted-foreground">React framework</div>
               </div>
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">99.99%</div>
-                <div className="text-sm text-muted-foreground">Uptime SLA</div>
+                <div className="text-4xl lg:text-5xl font-display mb-2">Supabase</div>
+                <div className="text-sm text-muted-foreground">Backend & Auth</div>
               </div>
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">&lt;50ms</div>
-                <div className="text-sm text-muted-foreground">Global latency</div>
+                <div className="text-4xl lg:text-5xl font-display mb-2">Flutter</div>
+                <div className="text-sm text-muted-foreground">Cross-platform mobile</div>
               </div>
             </div>
           </div>
@@ -85,34 +85,33 @@ export function InfrastructureSection() {
             <div className="border border-foreground/10">
               {/* Header */}
               <div className="px-6 py-4 border-b border-foreground/10 flex items-center justify-between">
-                <span className="text-sm font-mono text-muted-foreground">Edge Network</span>
+                <span className="text-sm font-mono text-muted-foreground">Tech Stack</span>
                 <span className="flex items-center gap-2 text-xs font-mono text-green-600">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  All operational
+                  Production-ready
                 </span>
               </div>
 
               {/* Locations */}
               <div>
-                {locations.map((location, index) => (
+                {techStack.map((tech, index) => (
                   <div
-                    key={location.city}
+                    key={tech.name}
                     className={`px-6 py-5 border-b border-foreground/5 last:border-b-0 flex items-center justify-between transition-all duration-300 ${
-                      activeLocation === index ? "bg-foreground/[0.02]" : ""
+                      activeTech === index ? "bg-foreground/[0.02]" : ""
                     }`}
                   >
                     <div className="flex items-center gap-4">
                       <span 
                         className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                          activeLocation === index ? "bg-foreground" : "bg-foreground/20"
+                          activeTech === index ? "bg-foreground" : "bg-foreground/20"
                         }`}
                       />
                       <div>
-                        <div className="font-medium">{location.city}</div>
-                        <div className="text-sm text-muted-foreground">{location.region}</div>
+                        <div className="font-medium">{tech.name}</div>
+                        <div className="text-sm text-muted-foreground">{tech.category}</div>
                       </div>
                     </div>
-                    <span className="font-mono text-sm text-muted-foreground">{location.latency}</span>
                   </div>
                 ))}
               </div>

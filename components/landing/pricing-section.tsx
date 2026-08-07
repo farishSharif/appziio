@@ -1,61 +1,53 @@
 "use client";
 
-import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    description: "For individuals and small projects",
-    price: { monthly: 0, annual: 0 },
+    name: "Starter Project",
+    description: "For MVPs and early-stage ideas",
+    price: "Contact us",
     features: [
-      "Up to 3 projects",
-      "1GB storage",
-      "Community support",
-      "Basic analytics",
-      "SSL certificates",
+      "Single-page or landing site",
+      "Mobile-responsive design",
+      "Basic SEO setup",
+      "1 round of revisions",
+      "2-week delivery",
     ],
-    cta: "Start free",
+    cta: "Get Started",
     popular: false,
   },
   {
-    name: "Pro",
-    description: "For growing teams and businesses",
-    price: { monthly: 29, annual: 24 },
+    name: "Growth Package",
+    description: "For startups ready to scale",
+    price: "Contact us",
     features: [
-      "Unlimited projects",
-      "100GB storage",
-      "Priority support",
-      "Advanced analytics",
-      "Custom domains",
-      "Team collaboration",
-      "API access",
+      "Full web or mobile app",
+      "Supabase backend integration",
+      "Auth & user management",
+      "Admin dashboard",
+      "Ongoing support",
     ],
-    cta: "Start trial",
+    cta: "Get a Quote",
     popular: true,
   },
   {
     name: "Enterprise",
-    description: "For large-scale operations",
-    price: { monthly: null, annual: null },
+    description: "For complex, large-scale builds",
+    price: "Contact us",
     features: [
-      "Everything in Pro",
-      "Unlimited storage",
-      "24/7 dedicated support",
-      "Custom integrations",
-      "SLA guarantee",
-      "On-premise option",
-      "Security audit",
-      "Custom contracts",
+      "Multi-platform development",
+      "Custom architecture",
+      "Priority support & SLA",
+      "Dedicated project manager",
+      "Flexible engagement model",
     ],
-    cta: "Contact sales",
+    cta: "Contact Us",
     popular: false,
   },
 ];
 
 export function PricingSection() {
-  const [isAnnual, setIsAnnual] = useState(true);
-
   return (
     <section id="pricing" className="relative py-32 lg:py-40 border-t border-foreground/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -65,46 +57,13 @@ export function PricingSection() {
             Pricing
           </span>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-tight text-foreground mb-6">
-            Simple, transparent
+            Project packages built
             <br />
-            <span className="text-stroke">pricing</span>
+            <span className="text-stroke">for your stage</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl">
-            Start free and scale as you grow. No hidden fees, no surprises.
+            Whether you&apos;re launching an MVP or scaling an enterprise platform, we have a package for you.
           </p>
-        </div>
-
-        {/* Billing Toggle */}
-        <div className="flex items-center gap-4 mb-16">
-          <span
-            className={`text-sm transition-colors ${
-              !isAnnual ? "text-foreground" : "text-muted-foreground"
-            }`}
-          >
-            Monthly
-          </span>
-          <button
-            onClick={() => setIsAnnual(!isAnnual)}
-            className="relative w-14 h-7 bg-foreground/10 rounded-full p-1 transition-colors hover:bg-foreground/20"
-          >
-            <div
-              className={`w-5 h-5 bg-foreground rounded-full transition-transform duration-300 ${
-                isAnnual ? "translate-x-7" : "translate-x-0"
-              }`}
-            />
-          </button>
-          <span
-            className={`text-sm transition-colors ${
-              isAnnual ? "text-foreground" : "text-muted-foreground"
-            }`}
-          >
-            Annual
-          </span>
-          {isAnnual && (
-            <span className="ml-2 px-2 py-1 bg-foreground text-primary-foreground text-xs font-mono">
-              Save 17%
-            </span>
-          )}
         </div>
 
         {/* Pricing Cards */}
@@ -133,16 +92,7 @@ export function PricingSection() {
 
               {/* Price */}
               <div className="mb-8 pb-8 border-b border-foreground/10">
-                {plan.price.monthly !== null ? (
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display text-5xl lg:text-6xl text-foreground">
-                      ${isAnnual ? plan.price.annual : plan.price.monthly}
-                    </span>
-                    <span className="text-muted-foreground">/month</span>
-                  </div>
-                ) : (
-                  <span className="font-display text-4xl text-foreground">Custom</span>
-                )}
+                <span className="font-display text-4xl text-foreground">{plan.price}</span>
               </div>
 
               {/* Features */}
@@ -172,12 +122,13 @@ export function PricingSection() {
 
         {/* Bottom Note */}
         <p className="mt-12 text-center text-sm text-muted-foreground">
-          All plans include automatic updates, HTTPS, and DDoS protection.{" "}
-          <a href="#" className="underline underline-offset-4 hover:text-foreground transition-colors">
-            Compare all features
+          All projects include source code handoff, deployment assistance, and post-launch support.{" "}
+          <a href="mailto:info@appziio.com" className="underline underline-offset-4 hover:text-foreground transition-colors">
+            Need something custom? Contact us
           </a>
         </p>
       </div>
     </section>
   );
 }
+

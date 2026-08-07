@@ -5,26 +5,26 @@ import { useEffect, useRef, useState } from "react";
 const features = [
   {
     number: "01",
-    title: "Instant Deployment",
-    description: "Push to production in seconds. Our edge network ensures your applications load instantly, anywhere in the world.",
+    title: "SaaS Development",
+    description: "We architect and build multi-tenant SaaS platforms from the ground up — auth, billing, dashboards, and APIs, all production-ready from day one.",
     visual: "deploy",
   },
   {
     number: "02",
-    title: "AI-Native Workflows",
-    description: "Build intelligent applications with built-in AI capabilities. From inference to training, everything scales automatically.",
+    title: "E-Commerce Platforms",
+    description: "Custom e-commerce solutions designed around your business model. From product catalogs to payment flows, we build storefronts that convert.",
     visual: "ai",
   },
   {
     number: "03",
-    title: "Real-time Collaboration",
-    description: "Work together seamlessly. Live preview, instant feedback, and version control that actually makes sense.",
+    title: "Android App Development",
+    description: "Native and cross-platform Android apps using Flutter. We handle everything from UI design to Play Store deployment — our first client app is going live now.",
     visual: "collab",
   },
   {
     number: "04",
-    title: "Enterprise Security",
-    description: "Bank-grade encryption, SOC 2 compliance, and granular access controls. Your data stays yours.",
+    title: "Website Development",
+    description: "Fast, responsive, SEO-optimized websites built with Next.js and Tailwind CSS. Marketing sites, dashboards, portals — whatever your business needs.",
     visual: "security",
   },
 ];
@@ -332,9 +332,9 @@ export function FeaturesSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Everything you need.
+            What we build.
             <br />
-            <span className="text-muted-foreground">Nothing you don&apos;t.</span>
+            <span className="text-muted-foreground">How we deliver.</span>
           </h2>
         </div>
 

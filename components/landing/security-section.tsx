@@ -6,27 +6,27 @@ import { Shield, Lock, Eye, FileCheck } from "lucide-react";
 const securityFeatures = [
   {
     icon: Shield,
-    title: "SOC 2 Type II",
-    description: "Independently audited security controls with continuous monitoring.",
+    title: "Secure authentication",
+    description: "Every app ships with industry-standard auth — encrypted passwords, secure sessions, and role-based access via Supabase Auth.",
   },
   {
     icon: Lock,
-    title: "End-to-end encryption",
-    description: "AES-256 encryption for data at rest and TLS 1.3 in transit.",
+    title: "HTTPS & encrypted data",
+    description: "All data in transit is encrypted via TLS. Deployments on Vercel and Supabase enforce HTTPS by default.",
   },
   {
     icon: Eye,
-    title: "Zero-trust architecture",
-    description: "Every request is authenticated and authorized. No exceptions.",
+    title: "Environment isolation",
+    description: "Development, staging, and production environments are fully separated. API keys and secrets never touch your codebase.",
   },
   {
     icon: FileCheck,
-    title: "GDPR & HIPAA",
-    description: "Full compliance with data protection and healthcare regulations.",
+    title: "Code reviews & testing",
+    description: "Every pull request is reviewed before merge. We test critical paths to catch issues before they reach your users.",
   },
 ];
 
-const certifications = ["SOC 2", "ISO 27001", "HIPAA", "GDPR", "CCPA"];
+const practices = ["HTTPS everywhere", "Auth best practices", "Environment isolation", "Secure APIs", "Code reviews"];
 
 export function SecuritySection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -64,21 +64,21 @@ export function SecuritySection() {
               non-negotiable.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-              Enterprise-grade security isn&apos;t optional. It&apos;s built into every layer 
-              of our platform, from infrastructure to application.
+              We follow secure development practices at every stage — from 
+              authentication to deployment. Your data and your users&apos; data stay protected.
             </p>
 
             {/* Certifications */}
             <div className="flex flex-wrap gap-3">
-              {certifications.map((cert, index) => (
+              {practices.map((practice, index) => (
                 <span
-                  key={cert}
+                  key={practice}
                   className={`px-4 py-2 border border-foreground/10 text-sm font-mono transition-all duration-500 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                   style={{ transitionDelay: `${index * 50 + 200}ms` }}
                 >
-                  {cert}
+                  {practice}
                 </span>
               ))}
             </div>

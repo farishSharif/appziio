@@ -5,38 +5,45 @@ import { useEffect, useRef, useState } from "react";
 const steps = [
   {
     number: "I",
-    title: "Connect your tools",
-    description: "Integrate with your existing stack in minutes. We support 200+ data sources out of the box.",
-    code: `import { appziio } from '@appziio/core'
+    title: "Discovery & Scoping",
+    description: "We start by understanding your business, users, and goals. Together we define the scope, tech stack, and timeline — no guesswork, just clarity.",
+    code: `// Step 1: Discovery
 
-appziio.connect({
-  source: 'your-database',
-  sync: true
-})`,
+const project = {
+  client: 'Your Business',
+  goals: ['MVP', 'Scale', 'Launch'],
+  stack: 'Next.js + Supabase + Flutter'
+}`,
   },
   {
     number: "II",
-    title: "Build your workflow",
-    description: "Design powerful automations with our visual builder or write code directly.",
-    code: `appziio.workflow('process', {
-  trigger: 'event',
-  actions: [
-    'validate',
-    'transform', 
-    'deliver'
-  ]
-})`,
+    title: "Design & Development",
+    description: "Our team designs, builds, and iterates in focused sprints. You get regular demos, transparent progress, and direct access to your developers.",
+    code: `// Step 2: Build
+
+const sprint = {
+  week: 1,
+  deliverables: [
+    'UI/UX design',
+    'Core features',
+    'API integration'
+  ],
+  status: 'in-progress'
+}`,
   },
   {
     number: "III",
-    title: "Ship to production",
-    description: "Deploy globally with zero configuration. Your app goes live in under 30 seconds.",
-    code: `appziio.deploy({
-  target: 'production',
-  regions: 'auto'
+    title: "Launch & Support",
+    description: "We handle deployment, store submissions, and go-live. Post-launch, we provide ongoing support, monitoring, and feature updates.",
+    code: `// Step 3: Ship
+
+await deploy({
+  platform: 'production',
+  store: 'Play Store',
+  monitoring: true
 })
 
-// Deployed to 12 regions`,
+// ✅ Live and running`,
   },
 ];
 
@@ -97,7 +104,7 @@ export function HowItWorksSection() {
           >
             Three steps.
             <br />
-            <span className="text-background/50">Infinite possibilities.</span>
+            <span className="text-background/50">Your product, launched.</span>
           </h2>
         </div>
 
@@ -151,7 +158,7 @@ export function HowItWorksSection() {
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                 </div>
-                <span className="text-xs font-mono text-background/40">workflow.ts</span>
+                <span className="text-xs font-mono text-background/40">project.ts</span>
               </div>
 
               {/* Code content */}
