@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://appziio.com";
+  const baseUrl = "https://www.appziio.com";
 
   return [
     {

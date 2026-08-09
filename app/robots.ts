@@ -29,6 +29,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://appziio.com/sitemap.xml",
+    sitemap: "https://www.appziio.com/sitemap.xml",
   };
 }

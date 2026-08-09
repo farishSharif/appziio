@@ -64,7 +64,7 @@ export function HeroSection() {
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground">
             <span className="w-8 h-px bg-foreground/30" />
-            Software development — Vellore, India
+            Appziio Software Studio — Vellore, India
           </span>
         </div>
         
@@ -75,7 +75,7 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="block">We build software</span>
+            <span className="block">Appziio builds software</span>
             <span className="block">
               that{" "}
               <span className="relative inline-block">
@@ -108,8 +108,7 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            From SaaS platforms to Android apps, we turn your vision into 
-            production-ready software. Built with Next.js, Supabase, Flutter & TypeScript.
+            Appziio is a software development studio building SaaS platforms, e-commerce applications, and Flutter Android apps for startups & enterprises.
           </p>
           
           {/* CTAs */}
@@ -118,20 +117,24 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <Button 
-              size="lg" 
-              className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
-            >
-              Start Your Project
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
-            >
-              See Our Work
-            </Button>
+            <a href="/contact">
+              <Button 
+                size="lg" 
+                className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
+              >
+                Start Your Project
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
+            <a href="/about">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
+              >
+                About Appziio
+              </Button>
+            </a>
           </div>
         </div>
         
@@ -147,7 +150,7 @@ export function HeroSection() {
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-16">
               {[
-                { value: "2", label: "founders, one mission", company: "EST. 2026" },
+                { value: "2", label: "founders, one mission", company: "APPZIIO EST. 2026" },
                 { value: "1", label: "client app in production", company: "PLAY STORE" },
                 { value: "4", label: "core services", company: "FULL STACK" },
                 { value: "5", label: "technologies we ship with", company: "MODERN STACK" },
@@ -164,8 +167,6 @@ export function HeroSection() {
           ))}
         </div>
       </div>
-      
-      {/* Scroll indicator */}
       
     </section>
   );

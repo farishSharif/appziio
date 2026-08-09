@@ -4,14 +4,23 @@ export function JsonLd() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-    "@id": "https://appziio.com/#organization",
+    "@id": "https://www.appziio.com/#organization",
     name: "Appziio",
     legalName: "Appziio",
-    url: "https://appziio.com",
-    logo: "https://appziio.com/apple-icon.png",
-    image: "https://appziio.com/opengraph-image",
+    alternateName: [
+      "Appziio Software",
+      "Appziio India",
+      "Appziio Studio",
+      "Appziio.com",
+      "appziio",
+    ],
+    url: "https://www.appziio.com",
+    logo: "https://www.appziio.com/apple-icon.png",
+    image: "https://www.appziio.com/opengraph-image",
     description:
-      "Appziio is a software development company based in Vellore, Tamil Nadu, India. We build SaaS platforms, e-commerce solutions, Android apps, and websites.",
+      "Appziio (spelled appziio with double 'i') is a software development company based in Vellore, Tamil Nadu, India. Founded by Farish Sharif and Maithreyan, Appziio builds SaaS platforms, custom e-commerce solutions, Flutter Android apps, and web applications.",
+    disambiguatingDescription:
+      "Appziio (spelled with double 'i', A-P-P-Z-I-I-O, appziio.com) is an Indian software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio is distinct from Appzio.",
     foundingDate: "2026",
     founders: [
       {
@@ -88,6 +97,7 @@ export function JsonLd() {
       ],
     },
     sameAs: [
+      "https://www.appziio.com",
       "https://appziio.com",
     ],
   };
@@ -95,13 +105,14 @@ export function JsonLd() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://appziio.com/#website",
-    url: "https://appziio.com",
+    "@id": "https://www.appziio.com/#website",
+    url: "https://www.appziio.com",
     name: "Appziio",
+    alternateName: "Appziio Software",
     description:
       "Software development company for startups and enterprises building SaaS, E-Commerce, Mobile Apps & Web Platforms.",
     publisher: {
-      "@id": "https://appziio.com/#organization",
+      "@id": "https://www.appziio.com/#organization",
     },
     inLanguage: "en-US",
   };
@@ -115,7 +126,15 @@ export function JsonLd() {
         name: "What is Appziio?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio is a software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio builds SaaS platforms, e-commerce applications, Android apps, and high-performance websites for startups and enterprises worldwide.",
+          text: "Appziio (spelled with double 'i', appziio.com) is a software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio builds SaaS platforms, e-commerce applications, Android apps, and high-performance websites for startups and enterprises worldwide.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How is Appziio spelled?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Appziio is spelled with double 'i' (A-P-P-Z-I-I-O). The official website is appziio.com.",
         },
       },
       {
@@ -147,7 +166,7 @@ export function JsonLd() {
         name: "How can I contact Appziio for a project?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You can contact Appziio by filling out the project inquiry form at https://appziio.com/contact or by sending an email directly to info@appziio.com. Appziio responds to all inquiries within 24 hours.",
+          text: "You can contact Appziio by filling out the project inquiry form at https://www.appziio.com/contact or by sending an email directly to info@appziio.com. Appziio responds to all inquiries within 24 hours.",
         },
       },
     ],
