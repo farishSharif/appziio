@@ -3,9 +3,18 @@ import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 
 export const metadata: Metadata = {
-  title: "Careers — Appziio",
+  title: "Careers",
   description:
-    "Join the Appziio team. We're a small software development company based in Vellore, India — always open to hearing from great people.",
+    "Explore engineering and software development careers at Appziio. Based in Vellore, India — we build SaaS, e-commerce, Android apps, and web applications.",
+  alternates: {
+    canonical: "/careers",
+  },
+  openGraph: {
+    title: "Careers at Appziio — Join Our Software Studio in Vellore, India",
+    description:
+      "Join the Appziio engineering team. Work on real software, SaaS platforms, and mobile apps alongside founders Farish Sharif and Maithreyan.",
+    url: "https://appziio.com/careers",
+  },
 };
 
 const values = [
@@ -72,9 +81,8 @@ export default function CareersPage() {
           </h1>
 
           <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
-            We&apos;re a small team right now — just two founders building real
-            software for real clients. But we&apos;re always open to hearing
-            from great people who share our drive.
+            We&apos;re a small team right now — founders building real software for
+            real clients. But we&apos;re always open to hearing from great people who share our drive.
           </p>
         </div>
       </section>

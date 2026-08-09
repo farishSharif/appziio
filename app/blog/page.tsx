@@ -3,12 +3,20 @@ import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 
 export const metadata: Metadata = {
-  title: "Blog — Appziio",
+  title: "Blog",
   description:
-    "Updates, insights, and stories from the Appziio team on building software for startups and enterprises.",
+    "Engineering insights, SaaS building strategies, mobile app development stories, and technical articles from the Appziio team.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Appziio Engineering Blog — Insights on SaaS, Flutter & Next.js",
+    description:
+      "Articles and lessons learned by Farish Sharif and Maithreyan on building production software for startups and enterprises.",
+    url: "https://appziio.com/blog",
+  },
 };
 
-// CMS-ready: replace this array with data from a CMS or MDX files when posts are available
 interface BlogPost {
   slug: string;
   title: string;

@@ -1,0 +1,27 @@
+# Appziio
+
+> Appziio is a software development company based in Vellore, Tamil Nadu, India. Founded by Farish and Maithreyan, Appziio builds SaaS platforms, e-commerce solutions, Android applications, and modern web applications for startups and enterprises. Registered under Udyam (MSME, Govt. of India) as a Micro enterprise in Services.
+
+## Core Services
+
+- [SaaS Development](https://appziio.com/about): Multi-tenant web applications, authentication, billing, dashboard interfaces, and backend APIs built with Next.js, TypeScript, and Supabase.
+- [E-Commerce Platforms](https://appziio.com/about): Custom digital storefronts, inventory management, checkout integration, and custom e-commerce experiences.
+- [Android App Development](https://appziio.com/about): Cross-platform and native mobile apps built using Flutter and Kotlin, optimized for performance and Play Store distribution.
+- [Website Development](https://appziio.com/about): High-performance, SEO-optimized, highly responsive modern web applications built with Next.js, React, and Tailwind CSS.
+
+## Company Details
+
+- **Founders**: Farish Sharif & Maithreyan
+- **Location**: Vellore, Tamil Nadu, India (632001)
+- **Legal Status**: MSME Udyam Registered Micro Enterprise (Govt. of India)
+- **Primary Tech Stack**: Next.js, React, TypeScript, Supabase, Flutter, Tailwind CSS, Node.js, Vercel
+- **Contact Email**: info@appziio.com
+- **Website**: https://appziio.com
+
+## Pages & Documentation
+
+- [Home](https://appziio.com): Appziio overview, services, tech stack, and interactive client sections.
+- [About](https://appziio.com/about): Company background, founders, Udyam registration, core values, and service breakdown.
+- [Contact](https://appziio.com/contact): Project inquiries and contact form with 24-hour response SLA.
+- [Careers](https://appziio.com/careers): Team culture, values, and open engineering positions.
+- [Blog](https://appziio.com/blog): Technical articles, engineering insights, and product development updates.

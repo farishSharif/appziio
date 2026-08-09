@@ -3,9 +3,18 @@ import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 
 export const metadata: Metadata = {
-  title: "About — Appziio",
+  title: "About Us",
   description:
-    "Appziio is a software development company founded by Farish and Maithreyan, based in Vellore, Tamil Nadu, India. We build SaaS, e-commerce, Android apps, and websites.",
+    "Learn about Appziio, a software development company founded by Farish Sharif and Maithreyan in Vellore, Tamil Nadu, India. Registered MSME Micro Enterprise specializing in SaaS, e-commerce, Android apps, and websites.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Appziio — Software Studio in Vellore, India",
+    description:
+      "Founded by Farish Sharif & Maithreyan. Building high-performance SaaS platforms, mobile apps, and enterprise web solutions.",
+    url: "https://appziio.com/about",
+  },
 };
 
 const services = [

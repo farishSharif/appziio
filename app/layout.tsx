@@ -1,43 +1,137 @@
-import React from "react"
-import type { Metadata } from 'next'
-import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { Toaster } from '@/components/ui/sonner'
-import './globals.css'
+import React from "react";
+import type { Metadata, Viewport } from "next";
+import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "@/components/ui/sonner";
+import { JsonLd } from "@/components/seo/json-ld";
+import "./globals.css";
 
-const instrumentSans = Instrument_Sans({ 
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  variable: '--font-instrument'
+  variable: "--font-instrument",
 });
 
-const instrumentSerif = Instrument_Serif({ 
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
-  variable: '--font-instrument-serif'
+  variable: "--font-instrument-serif",
 });
 
-const jetbrainsMono = JetBrains_Mono({ 
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: '--font-jetbrains'
+  variable: "--font-jetbrains",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
-  title: 'Appziio — Software Development for Startups & Enterprises',
-  description: 'Appziio builds SaaS platforms, e-commerce solutions, Android apps, and websites. Based in Vellore, India. Powered by Next.js, Supabase, Flutter & TypeScript.',
-}
+  metadataBase: new URL("https://appziio.com"),
+  title: {
+    default: "Appziio — Software Development for Startups & Enterprises",
+    template: "%s | Appziio",
+  },
+  description:
+    "Appziio is a software development company in Vellore, India. We build SaaS platforms, custom e-commerce solutions, Flutter Android apps, and high-performance websites.",
+  keywords: [
+    "Appziio",
+    "Software Development Company Vellore",
+    "SaaS Development India",
+    "E-Commerce Development",
+    "Android App Development",
+    "Flutter Developers Vellore",
+    "Next.js Development Agency",
+    "Software Agency Tamil Nadu",
+    "Farish Sharif Appziio",
+    "Maithreyan Appziio",
+    "Web Application Development",
+    "MSME Software Studio",
+  ],
+  authors: [
+    { name: "Appziio", url: "https://appziio.com" },
+    { name: "Farish Sharif" },
+    { name: "Maithreyan" },
+  ],
+  creator: "Appziio",
+  publisher: "Appziio",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://appziio.com",
+    siteName: "Appziio",
+    title: "Appziio — Software Development for Startups & Enterprises",
+    description:
+      "Building SaaS platforms, custom e-commerce apps, Android applications, and modern web software. Based in Vellore, India.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Appziio — Software Development Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Appziio — Software Development for Startups & Enterprises",
+    description:
+      "Building SaaS platforms, e-commerce solutions, Android apps, and high-performance websites. Based in Vellore, India.",
+    images: ["/opengraph-image"],
+    creator: "@appziio",
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-dark-32x32.png", media: "(prefers-color-scheme: dark)" },
+      { url: "/icon-light-32x32.png", media: "(prefers-color-scheme: light)" },
+    ],
+    apple: "/apple-icon.png",
+  },
+  other: {
+    "geo.region": "IN-TN",
+    "geo.placename": "Vellore",
+    "geo.position": "12.9165;79.1325",
+    ICBM: "12.9165, 79.1325",
+  },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body
+        className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
+        <JsonLd />
         {children}
         <Toaster />
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
