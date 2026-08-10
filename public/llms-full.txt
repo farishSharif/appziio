@@ -9,6 +9,7 @@ Appziio is an Indian software development studio located in Vellore, Tamil Nadu.
 - **Founders**: Farish Sharif & Maithreyan
 - **Headquarters**: Vellore, Tamil Nadu, India (PIN 632001)
 - **Official Website**: https://appziio.com
+- **Official LinkedIn**: https://www.linkedin.com/company/appziio-technologies/
 - **Official Contact Email**: info@appziio.com
 - **Core Industry**: Software Engineering, Custom Web & Mobile Application Development, SaaS Development
 

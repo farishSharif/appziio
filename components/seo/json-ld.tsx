@@ -99,6 +99,7 @@ export function JsonLd() {
     sameAs: [
       "https://www.appziio.com",
       "https://appziio.com",
+      "https://www.linkedin.com/company/appziio-technologies/",
     ],
   };
 

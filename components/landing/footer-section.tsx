@@ -25,7 +25,7 @@ const footerLinks = {
 const socialLinks = [
   { name: "Twitter", href: "#" },
   { name: "GitHub", href: "#" },
-  { name: "LinkedIn", href: "#" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/appziio-technologies/" },
 ];
 
 export function FooterSection() {
@@ -56,6 +56,8 @@ export function FooterSection() {
                   <a
                     key={link.name}
                     href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
                   >
                     {link.name}
@@ -95,6 +97,13 @@ export function FooterSection() {
         <div className="py-8 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
             © 2026 Appziio. All rights reserved.
+          </p>
+
+          <p className="text-sm text-muted-foreground font-mono">
+            Founded by{" "}
+            <span className="text-foreground font-medium">Farish Sharif</span>
+            {" & "}
+            <span className="text-foreground font-medium">Maithreyan D</span>
           </p>
 
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
