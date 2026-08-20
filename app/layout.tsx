@@ -4,6 +4,7 @@ import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/goo
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "@/components/ui/sonner";
 import { JsonLd } from "@/components/seo/json-ld";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -133,6 +134,7 @@ export default function RootLayout({
       <body
         className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
+        <ScrollProgress />
         <JsonLd />
         {children}
         <Toaster />

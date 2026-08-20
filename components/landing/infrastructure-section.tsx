@@ -3,12 +3,12 @@
 import { useEffect, useState, useRef } from "react";
 
 const techStack = [
-  { name: "Next.js", category: "Frontend Framework" },
-  { name: "TypeScript", category: "Language" },
-  { name: "Tailwind CSS", category: "Styling" },
-  { name: "Supabase", category: "Backend & Database" },
-  { name: "Flutter", category: "Mobile Development" },
-  { name: "Vercel", category: "Deployment" },
+  { name: "Next.js", category: "Frontend Framework", description: "Server components, fast routing, and edge rendering" },
+  { name: "TypeScript", category: "Language", description: "Type-safe robust architecture across client and backend" },
+  { name: "Tailwind CSS", category: "Styling", description: "Modern, maintainable, responsive UI utility system" },
+  { name: "Supabase", category: "Backend & Database", description: "PostgreSQL, real-time sync, auth, and secure storage" },
+  { name: "Flutter", category: "Mobile Development", description: "High-performance native Android & iOS mobile applications" },
+  { name: "Vercel", category: "Deployment", description: "Global edge CDN and automated continuous deployment" },
 ];
 
 export function InfrastructureSection() {
@@ -31,7 +31,7 @@ export function InfrastructureSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTech((prev) => (prev + 1) % techStack.length);
-    }, 2000);
+    }, 2800);
     return () => clearInterval(interval);
   }, []);
 
@@ -41,7 +41,7 @@ export function InfrastructureSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Content */}
           <div
-            className={`transition-all duration-700 ${
+            className={`transition-all duration-700 ease-out ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
             }`}
           >
@@ -60,60 +60,73 @@ export function InfrastructureSection() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8">
-              <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">Next.js</div>
-                <div className="text-sm text-muted-foreground">React framework</div>
+            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-foreground/10">
+              <div className="p-4 rounded-xl hover:bg-foreground/[0.02] transition-colors">
+                <div className="text-3xl lg:text-4xl font-display mb-1">Next.js</div>
+                <div className="text-xs text-muted-foreground">React framework</div>
               </div>
-              <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">Supabase</div>
-                <div className="text-sm text-muted-foreground">Backend & Auth</div>
+              <div className="p-4 rounded-xl hover:bg-foreground/[0.02] transition-colors">
+                <div className="text-3xl lg:text-4xl font-display mb-1">Supabase</div>
+                <div className="text-xs text-muted-foreground">Backend & Auth</div>
               </div>
-              <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">Flutter</div>
-                <div className="text-sm text-muted-foreground">Cross-platform mobile</div>
+              <div className="p-4 rounded-xl hover:bg-foreground/[0.02] transition-colors">
+                <div className="text-3xl lg:text-4xl font-display mb-1">Flutter</div>
+                <div className="text-xs text-muted-foreground">Cross-platform mobile</div>
               </div>
             </div>
           </div>
 
-          {/* Right: Location list */}
+          {/* Right: Interactive Tech list */}
           <div
-            className={`transition-all duration-700 delay-200 ${
+            className={`transition-all duration-700 delay-200 ease-out ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
             }`}
           >
-            <div className="border border-foreground/10">
+            <div className="border border-foreground/15 rounded-2xl overflow-hidden bg-background/50 shadow-sm backdrop-blur-xs">
               {/* Header */}
-              <div className="px-6 py-4 border-b border-foreground/10 flex items-center justify-between">
-                <span className="text-sm font-mono text-muted-foreground">Tech Stack</span>
-                <span className="flex items-center gap-2 text-xs font-mono text-green-600">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  Production-ready
+              <div className="px-6 py-4 border-b border-foreground/10 flex items-center justify-between bg-foreground/[0.02]">
+                <span className="text-sm font-mono text-muted-foreground">Stack & Tools</span>
+                <span className="flex items-center gap-2 text-xs font-mono text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Production-Ready
                 </span>
               </div>
 
-              {/* Locations */}
-              <div>
-                {techStack.map((tech, index) => (
-                  <div
-                    key={tech.name}
-                    className={`px-6 py-5 border-b border-foreground/5 last:border-b-0 flex items-center justify-between transition-all duration-300 ${
-                      activeTech === index ? "bg-foreground/[0.02]" : ""
-                    }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <span 
-                        className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                          activeTech === index ? "bg-foreground" : "bg-foreground/20"
-                        }`}
-                      />
-                      <div>
-                        <div className="font-medium">{tech.name}</div>
-                        <div className="text-sm text-muted-foreground">{tech.category}</div>
+              {/* Items */}
+              <div className="divide-y divide-foreground/5">
+                {techStack.map((tech, index) => {
+                  const isActive = activeTech === index;
+                  return (
+                    <button
+                      key={tech.name}
+                      type="button"
+                      onClick={() => setActiveTech(index)}
+                      className={`w-full text-left px-6 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer ${
+                        isActive ? "bg-foreground/[0.04] pl-8" : "hover:bg-foreground/[0.02]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <span 
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            isActive ? "bg-foreground scale-125 shadow-xs" : "bg-foreground/20"
+                          }`}
+                        />
+                        <div>
+                          <div className="font-medium text-foreground flex items-center gap-2">
+                            <span>{tech.name}</span>
+                            {isActive && (
+                              <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-foreground text-background">Active</span>
+                            )}
+                          </div>
+                          <div className="text-xs text-muted-foreground">{tech.description}</div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                      <span className="text-xs font-mono text-muted-foreground hidden sm:inline-block">
+                        {tech.category}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -6,44 +6,51 @@ const steps = [
   {
     number: "I",
     title: "Discovery & Scoping",
+    tag: "Planning",
     description: "We start by understanding your business, users, and goals. Together we define the scope, tech stack, and timeline — no guesswork, just clarity.",
-    code: `// Step 1: Discovery
+    code: `// Step 1: Discovery & Architecture
 
 const project = {
   client: 'Your Business',
   goals: ['MVP', 'Scale', 'Launch'],
-  stack: 'Next.js + Supabase + Flutter'
-}`,
+  stack: ['Next.js', 'Supabase', 'Flutter'],
+  timeline: '2-4 weeks to first release'
+};
+
+export default project;`,
   },
   {
     number: "II",
     title: "Design & Development",
+    tag: "Execution",
     description: "Our team designs, builds, and iterates in focused sprints. You get regular demos, transparent progress, and direct access to your developers.",
-    code: `// Step 2: Build
+    code: `// Step 2: Sprint & Build Cycle
 
 const sprint = {
   week: 1,
   deliverables: [
-    'UI/UX design',
-    'Core features',
-    'API integration'
+    'Pixel-perfect responsive UI',
+    'Secure database & auth rules',
+    'Real-time API integration'
   ],
-  status: 'in-progress'
-}`,
+  status: 'active-build'
+};`,
   },
   {
     number: "III",
     title: "Launch & Support",
+    tag: "Production",
     description: "We handle deployment, store submissions, and go-live. Post-launch, we provide ongoing support, monitoring, and feature updates.",
-    code: `// Step 3: Ship
+    code: `// Step 3: Production Deployment
 
 await deploy({
   platform: 'production',
-  store: 'Play Store',
-  monitoring: true
-})
+  store: 'Play Store & Web',
+  monitoring: true,
+  slaSupport: '24/7 coverage'
+});
 
-// ✅ Live and running`,
+// ✅ Successfully shipped to production`,
   },
 ];
 
@@ -67,7 +74,7 @@ export function HowItWorksSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 5000);
+    }, 5500);
     return () => clearInterval(interval);
   }, []);
 
@@ -98,7 +105,7 @@ export function HowItWorksSection() {
             Process
           </span>
           <h2
-            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
+            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ease-out ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -109,77 +116,91 @@ export function HowItWorksSection() {
         </div>
 
         {/* Main content */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Steps */}
-          <div className="space-y-0">
-            {steps.map((step, index) => (
-              <button
-                key={step.number}
-                type="button"
-                onClick={() => setActiveStep(index)}
-                className={`w-full text-left py-8 border-b border-background/10 transition-all duration-500 group ${
-                  activeStep === index ? "opacity-100" : "opacity-40 hover:opacity-70"
-                }`}
-              >
-                <div className="flex items-start gap-6">
-                  <span className="font-display text-3xl text-background/30">{step.number}</span>
-                  <div className="flex-1">
-                    <h3 className="text-2xl lg:text-3xl font-display mb-3 group-hover:translate-x-2 transition-transform duration-300">
-                      {step.title}
-                    </h3>
-                    <p className="text-background/60 leading-relaxed">
-                      {step.description}
-                    </p>
-                    
-                    {/* Progress indicator */}
-                    {activeStep === index && (
-                      <div className="mt-4 h-px bg-background/20 overflow-hidden">
-                        <div 
-                          className="h-full bg-background w-0"
-                          style={{
-                            animation: 'progress 5s linear forwards'
-                          }}
-                        />
+          <div className="space-y-3">
+            {steps.map((step, index) => {
+              const isActive = activeStep === index;
+              return (
+                <button
+                  key={step.number}
+                  type="button"
+                  onClick={() => setActiveStep(index)}
+                  className={`w-full text-left p-6 lg:p-8 rounded-2xl border transition-all duration-500 group cursor-pointer ${
+                    isActive 
+                      ? "bg-background/10 border-background/25 shadow-lg" 
+                      : "bg-transparent border-background/5 opacity-50 hover:opacity-85 hover:bg-background/5 hover:border-background/15"
+                  }`}
+                >
+                  <div className="flex items-start gap-6">
+                    <span className={`font-display text-3xl transition-colors duration-300 ${isActive ? "text-background" : "text-background/40"}`}>
+                      {step.number}
+                    </span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-2xl lg:text-3xl font-display group-hover:translate-x-1 transition-transform duration-300">
+                          {step.title}
+                        </h3>
+                        <span className="text-xs font-mono uppercase px-2 py-0.5 rounded-full border border-background/20 text-background/60">
+                          {step.tag}
+                        </span>
                       </div>
-                    )}
+                      <p className="text-background/70 leading-relaxed text-base">
+                        {step.description}
+                      </p>
+                      
+                      {/* Progress indicator */}
+                      {isActive && (
+                        <div className="mt-5 h-1 bg-background/15 rounded-full overflow-hidden">
+                          <div 
+                            key={activeStep}
+                            className="h-full bg-background rounded-full origin-left"
+                            style={{
+                              animation: 'progress 5.5s linear forwards'
+                            }}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
 
           {/* Code display */}
           <div className="lg:sticky lg:top-32 self-start">
-            <div className="border border-background/10 overflow-hidden">
+            <div className="border border-background/20 rounded-2xl overflow-hidden bg-background/5 backdrop-blur-md shadow-2xl transition-all duration-500 hover:border-background/30">
               {/* Window header */}
-              <div className="px-6 py-4 border-b border-background/10 flex items-center justify-between">
+              <div className="px-6 py-4 border-b border-background/15 flex items-center justify-between bg-background/5">
                 <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-background/20" />
-                  <div className="w-3 h-3 rounded-full bg-background/20" />
-                  <div className="w-3 h-3 rounded-full bg-background/20" />
+                  <div className="w-3 h-3 rounded-full bg-red-400/80" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
+                  <div className="w-3 h-3 rounded-full bg-green-400/80" />
                 </div>
-                <span className="text-xs font-mono text-background/40">project.ts</span>
+                <span className="text-xs font-mono text-background/60">appziio-process.ts</span>
+                <span className="text-xs font-mono text-background/40">Step {activeStep + 1}/3</span>
               </div>
 
               {/* Code content */}
-              <div className="p-8 font-mono text-sm min-h-[280px]">
-                <pre className="text-background/70">
+              <div className="p-8 font-mono text-sm min-h-[300px] transition-all">
+                <pre className="text-background/80 overflow-x-auto leading-relaxed">
                   {steps[activeStep].code.split('\n').map((line, lineIndex) => (
                     <div 
                       key={`${activeStep}-${lineIndex}`} 
-                      className="leading-loose code-line-reveal"
+                      className="leading-loose code-line-reveal flex"
                       style={{ 
-                        animationDelay: `${lineIndex * 80}ms`,
+                        animationDelay: `${lineIndex * 60}ms`,
                       }}
                     >
-                      <span className="text-background/20 select-none w-8 inline-block">{lineIndex + 1}</span>
-                      <span className="inline-flex">
+                      <span className="text-background/30 select-none w-8 shrink-0 text-right pr-4">{lineIndex + 1}</span>
+                      <span className="inline-flex flex-wrap">
                         {line.split('').map((char, charIndex) => (
                           <span
                             key={`${activeStep}-${lineIndex}-${charIndex}`}
                             className="code-char-reveal"
                             style={{
-                              animationDelay: `${lineIndex * 80 + charIndex * 15}ms`,
+                              animationDelay: `${lineIndex * 60 + charIndex * 12}ms`,
                             }}
                           >
                             {char === ' ' ? '\u00A0' : char}
@@ -192,9 +213,12 @@ export function HowItWorksSection() {
               </div>
 
               {/* Status */}
-              <div className="px-6 py-4 border-t border-background/10 flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs font-mono text-background/40">Ready</span>
+              <div className="px-6 py-4 border-t border-background/15 flex items-center justify-between bg-background/5">
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="text-xs font-mono text-background/70">Sprint Active & Ready</span>
+                </div>
+                <span className="text-xs font-mono text-background/40">Appziio Architecture</span>
               </div>
             </div>
           </div>
@@ -209,8 +233,8 @@ export function HowItWorksSection() {
         
         .code-line-reveal {
           opacity: 0;
-          transform: translateX(-8px);
-          animation: lineReveal 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          transform: translateX(-6px);
+          animation: lineReveal 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         
         @keyframes lineReveal {
@@ -222,8 +246,8 @@ export function HowItWorksSection() {
         
         .code-char-reveal {
           opacity: 0;
-          filter: blur(8px);
-          animation: charReveal 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          filter: blur(6px);
+          animation: charReveal 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         
         @keyframes charReveal {

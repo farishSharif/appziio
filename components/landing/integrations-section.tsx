@@ -11,8 +11,8 @@ const technologies = [
   { name: "Vercel", category: "Deployment" },
   { name: "PostgreSQL", category: "Database" },
   { name: "Git", category: "Version Control" },
-  { name: "Figma", category: "Design" },
-  { name: "Firebase", category: "Mobile Services" },
+  { name: "Figma", category: "UI/UX Design" },
+  { name: "Firebase", category: "Cloud Services" },
   { name: "Dart", category: "Language" },
   { name: "React", category: "UI Library" },
 ];
@@ -38,7 +38,7 @@ export function IntegrationsSection() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-16 lg:mb-24 transition-all duration-700 ${
+          className={`text-center max-w-3xl mx-auto mb-16 lg:mb-20 transition-all duration-700 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -60,19 +60,20 @@ export function IntegrationsSection() {
       </div>
       
       {/* Full-width marquees outside container */}
-      <div className="w-full mb-6">
+      <div className="w-full mb-6 overflow-hidden">
         <div className="flex gap-6 marquee">
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6 shrink-0">
               {technologies.map((tech) => (
                 <div
                   key={`${tech.name}-${setIndex}`}
-                  className="shrink-0 px-8 py-6 border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.02] transition-all duration-300 group"
+                  className="shrink-0 px-8 py-5 rounded-2xl border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-all duration-300 group cursor-default shadow-2xs hover:scale-105"
                 >
-                  <div className="text-lg font-medium group-hover:translate-x-1 transition-transform">
-                    {tech.name}
+                  <div className="text-lg font-medium group-hover:translate-x-0.5 transition-transform flex items-center gap-2">
+                    <span>{tech.name}</span>
+                    <span className="w-1 h-1 rounded-full bg-foreground/30 group-hover:bg-foreground transition-colors" />
                   </div>
-                  <div className="text-sm text-muted-foreground">{tech.category}</div>
+                  <div className="text-xs font-mono text-muted-foreground mt-0.5">{tech.category}</div>
                 </div>
               ))}
             </div>
@@ -81,19 +82,20 @@ export function IntegrationsSection() {
       </div>
       
       {/* Reverse marquee */}
-      <div className="w-full">
+      <div className="w-full overflow-hidden">
         <div className="flex gap-6 marquee-reverse">
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6 shrink-0">
               {[...technologies].reverse().map((tech) => (
                 <div
                   key={`${tech.name}-reverse-${setIndex}`}
-                  className="shrink-0 px-8 py-6 border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.02] transition-all duration-300 group"
+                  className="shrink-0 px-8 py-5 rounded-2xl border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-all duration-300 group cursor-default shadow-2xs hover:scale-105"
                 >
-                  <div className="text-lg font-medium group-hover:translate-x-1 transition-transform">
-                    {tech.name}
+                  <div className="text-lg font-medium group-hover:translate-x-0.5 transition-transform flex items-center gap-2">
+                    <span>{tech.name}</span>
+                    <span className="w-1 h-1 rounded-full bg-foreground/30 group-hover:bg-foreground transition-colors" />
                   </div>
-                  <div className="text-sm text-muted-foreground">{tech.category}</div>
+                  <div className="text-xs font-mono text-muted-foreground mt-0.5">{tech.category}</div>
                 </div>
               ))}
             </div>

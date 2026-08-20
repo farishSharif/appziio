@@ -86,7 +86,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-foreground selection:text-background;
   }
   html {
     scroll-behavior: smooth;
@@ -107,8 +107,16 @@
     animation: marquee 30s linear infinite;
   }
   
+  .marquee:hover {
+    animation-play-state: paused;
+  }
+  
   .marquee-reverse {
     animation: marquee-reverse 25s linear infinite;
+  }
+
+  .marquee-reverse:hover {
+    animation-play-state: paused;
   }
 
   @keyframes marquee {
@@ -131,11 +139,12 @@
   }
   
   .hover-lift {
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
   }
   
   .hover-lift:hover {
     transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
   }
   
   .letter-spin {
@@ -150,21 +159,76 @@
   .animate-char-in {
     animation: char-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     opacity: 0;
-    filter: blur(40px);
-    transform: translateY(100%);
+    filter: blur(20px);
+    transform: translateY(80%);
   }
   
   @keyframes char-in {
     0% {
       opacity: 0;
-      filter: blur(40px);
-      transform: translateY(100%);
+      filter: blur(20px);
+      transform: translateY(80%);
     }
     100% {
       opacity: 1;
       filter: blur(0);
       transform: translateY(0);
     }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.04); }
+  }
+
+  .shimmer-badge {
+    background: linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.05) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .button-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    transition: all 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .button-shine:hover::after {
+    left: 140%;
   }
 
   .noise-overlay {

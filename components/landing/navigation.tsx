@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const navLinks = [
-  { name: "Features", href: "#features" },
-  { name: "How it works", href: "#how-it-works" },
-  { name: "Services", href: "#features" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Services", href: "/#features" },
+  { name: "Process", href: "/#how-it-works" },
+  { name: "Tech Stack", href: "/#integrations" },
+  { name: "Pricing", href: "/#pricing" },
+  { name: "About", href: "/about" },
 ];
 
 export function Navigation() {
@@ -25,7 +26,7 @@ export function Navigation() {
 
   return (
     <header
-      className={`fixed z-50 transition-all duration-500 ${
+      className={`fixed z-50 transition-all duration-500 ease-out ${
         isScrolled 
           ? "top-4 left-4 right-4" 
           : "top-0 left-0 right-0"
@@ -34,7 +35,7 @@ export function Navigation() {
       <nav 
         className={`mx-auto transition-all duration-500 ${
           isScrolled || isMobileMenuOpen
-            ? "bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl shadow-lg max-w-[1200px]"
+            ? "bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] max-w-[1200px]"
             : "bg-transparent max-w-[1400px]"
         }`}
       >
@@ -45,43 +46,51 @@ export function Navigation() {
         >
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 group">
-            <span className={`font-display tracking-tight transition-all duration-500 ${isScrolled ? "text-xl" : "text-2xl"}`}>Appziio</span>
+            <span className={`font-display tracking-tight transition-all duration-500 group-hover:tracking-wider ${isScrolled ? "text-xl" : "text-2xl"}`}>
+              Appziio
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-foreground opacity-60 group-hover:scale-150 transition-transform duration-300" />
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-12">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300 relative group"
+                className="text-sm text-foreground/75 hover:text-foreground transition-colors duration-300 relative group py-1 font-medium"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 ease-out group-hover:w-full" />
               </a>
             ))}
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
-            <Button
-              size="sm"
-              className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
-            >
-              Get a Quote
-            </Button>
+            <a href="/contact">
+              <Button
+                size="sm"
+                className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 button-shine hover:scale-105 active:scale-95 group ${
+                  isScrolled ? "px-5 h-9 text-xs" : "px-6 h-10 text-sm"
+                }`}
+              >
+                Get a Quote
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-foreground hover:opacity-75 transition-opacity"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 animate-in fade-in zoom-in-75 duration-200" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 animate-in fade-in zoom-in-75 duration-200" />
             )}
           </button>
         </div>
@@ -90,27 +99,27 @@ export function Navigation() {
       
       {/* Mobile Menu - Full Screen Overlay */}
       <div
-        className={`md:hidden fixed inset-0 bg-background z-40 transition-all duration-500 ${
+        className={`md:hidden fixed inset-0 bg-background/98 backdrop-blur-2xl z-40 transition-all duration-500 ${
           isMobileMenuOpen 
             ? "opacity-100 pointer-events-auto" 
             : "opacity-0 pointer-events-none"
         }`}
         style={{ top: 0 }}
       >
-        <div className="flex flex-col h-full px-8 pt-28 pb-8">
+        <div className="flex flex-col h-full px-8 pt-28 pb-10">
           {/* Navigation Links */}
-          <div className="flex-1 flex flex-col justify-center gap-8">
+          <div className="flex-1 flex flex-col justify-center gap-6">
             {navLinks.map((link, i) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-5xl font-display text-foreground hover:text-muted-foreground transition-all duration-500 ${
+                className={`text-4xl font-display text-foreground hover:text-muted-foreground transition-all duration-500 ${
                   isMobileMenuOpen 
                     ? "opacity-100 translate-y-0" 
-                    : "opacity-0 translate-y-4"
+                    : "opacity-0 translate-y-6"
                 }`}
-                style={{ transitionDelay: isMobileMenuOpen ? `${i * 75}ms` : "0ms" }}
+                style={{ transitionDelay: isMobileMenuOpen ? `${i * 60 + 100}ms` : "0ms" }}
               >
                 {link.name}
               </a>
@@ -121,16 +130,18 @@ export function Navigation() {
           <div className={`flex gap-4 pt-8 border-t border-foreground/10 transition-all duration-500 ${
             isMobileMenuOpen 
               ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-4"
+              : "opacity-0 translate-y-6"
           }`}
-          style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
+          style={{ transitionDelay: isMobileMenuOpen ? "400ms" : "0ms" }}
           >
-            <Button 
-              className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Get a Quote
-            </Button>
+            <a href="/contact" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button 
+                className="w-full bg-foreground text-background rounded-full h-14 text-base button-shine"
+              >
+                Get a Quote
+                <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>

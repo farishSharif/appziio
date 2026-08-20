@@ -4,14 +4,15 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Loader2, Check } from "lucide-react";
+import { ArrowRight, Loader2, Check, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 const projectTypes = [
   "SaaS Development",
   "E-Commerce Platform",
-  "Android App",
+  "Android App (Flutter)",
   "Website Development",
+  "Full Stack Custom Solution",
   "Other",
 ];
 
@@ -61,7 +62,7 @@ export function ContactForm() {
       }
 
       setIsSubmitted(true);
-      toast.success("Message sent! We'll get back to you soon.");
+      toast.success("Message sent! We'll get back to you within 24 hours.");
     } catch (err) {
       toast.error(
         err instanceof Error ? err.message : "Failed to send message. Please try again."
@@ -73,20 +74,23 @@ export function ContactForm() {
 
   return (
     <div>
-      <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-        <span className="w-8 h-px bg-foreground/30" />
-        Send a message
-      </span>
+      <div className="flex items-center justify-between mb-8 pb-4 border-b border-foreground/10">
+        <span className="inline-flex items-center gap-2.5 text-sm font-mono text-muted-foreground">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          Send a Project Message
+        </span>
+        <span className="text-xs font-mono text-muted-foreground">Quick Response</span>
+      </div>
 
       {isSubmitted ? (
-        <div className="py-16 text-center border border-foreground/10 p-12">
-          <div className="w-16 h-16 mx-auto mb-6 border border-foreground/10 flex items-center justify-center">
-            <Check className="w-8 h-8 text-foreground" />
+        <div className="py-16 text-center rounded-2xl border border-foreground/10 p-10 bg-foreground/[0.02] animate-in fade-in zoom-in-95 duration-500">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl border border-foreground/20 flex items-center justify-center bg-foreground text-background shadow-lg">
+            <Check className="w-8 h-8" />
           </div>
-          <h3 className="text-2xl font-display mb-4">Message sent.</h3>
-          <p className="text-muted-foreground">
-            We&apos;ll get back to you at{" "}
-            <span className="text-foreground">{formState.email}</span> within 24 hours.
+          <h3 className="text-3xl font-display mb-3">Message Received.</h3>
+          <p className="text-muted-foreground max-w-sm mx-auto leading-relaxed text-sm">
+            Thank you! We&apos;ll review your project details and get back to{" "}
+            <span className="text-foreground font-medium underline">{formState.email}</span> within 24 hours.
           </p>
         </div>
       ) : (
@@ -98,16 +102,16 @@ export function ContactForm() {
             </label>
             <Input
               id="name"
-              placeholder="Your name"
+              placeholder="Your name or company"
               value={formState.name}
               onChange={(e) =>
                 setFormState({ ...formState, name: e.target.value })
               }
-              className="h-12 border-foreground/15 bg-transparent focus-visible:border-foreground focus-visible:ring-foreground/10"
+              className="h-12 rounded-xl border-foreground/15 bg-background/50 focus-visible:border-foreground focus-visible:ring-foreground/10 transition-all"
               aria-invalid={!!errors.name}
             />
             {errors.name && (
-              <p className="text-sm text-red-600 mt-1">{errors.name}</p>
+              <p className="text-xs font-mono text-red-600 mt-1.5">{errors.name}</p>
             )}
           </div>
 
@@ -124,11 +128,11 @@ export function ContactForm() {
               onChange={(e) =>
                 setFormState({ ...formState, email: e.target.value })
               }
-              className="h-12 border-foreground/15 bg-transparent focus-visible:border-foreground focus-visible:ring-foreground/10"
+              className="h-12 rounded-xl border-foreground/15 bg-background/50 focus-visible:border-foreground focus-visible:ring-foreground/10 transition-all"
               aria-invalid={!!errors.email}
             />
             {errors.email && (
-              <p className="text-sm text-red-600 mt-1">{errors.email}</p>
+              <p className="text-xs font-mono text-red-600 mt-1.5">{errors.email}</p>
             )}
           </div>
 
@@ -146,7 +150,7 @@ export function ContactForm() {
                   projectType: e.target.value,
                 })
               }
-              className="h-12 w-full border border-foreground/15 bg-transparent px-3 text-base rounded-md outline-none focus:border-foreground focus:ring-[3px] focus:ring-foreground/10 transition-[color,box-shadow] md:text-sm"
+              className="h-12 w-full rounded-xl border border-foreground/15 bg-background/50 px-3.5 text-base outline-none focus:border-foreground focus:ring-[3px] focus:ring-foreground/10 transition-all md:text-sm cursor-pointer"
               aria-invalid={!!errors.projectType}
             >
               <option value="" disabled>
@@ -159,27 +163,27 @@ export function ContactForm() {
               ))}
             </select>
             {errors.projectType && (
-              <p className="text-sm text-red-600 mt-1">{errors.projectType}</p>
+              <p className="text-xs font-mono text-red-600 mt-1.5">{errors.projectType}</p>
             )}
           </div>
 
           {/* Message */}
           <div>
             <label htmlFor="message" className="block text-sm font-medium mb-2">
-              Message
+              Message & Scope
             </label>
             <Textarea
               id="message"
-              placeholder="Tell us about your project..."
+              placeholder="Tell us what you're building, target timeline, or tech preferences..."
               value={formState.message}
               onChange={(e) =>
                 setFormState({ ...formState, message: e.target.value })
               }
-              className="min-h-[160px] border-foreground/15 bg-transparent focus-visible:border-foreground focus-visible:ring-foreground/10"
+              className="min-h-[140px] rounded-xl border-foreground/15 bg-background/50 focus-visible:border-foreground focus-visible:ring-foreground/10 transition-all"
               aria-invalid={!!errors.message}
             />
             {errors.message && (
-              <p className="text-sm text-red-600 mt-1">{errors.message}</p>
+              <p className="text-xs font-mono text-red-600 mt-1.5">{errors.message}</p>
             )}
           </div>
 
@@ -187,16 +191,16 @@ export function ContactForm() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-14 bg-foreground text-background hover:bg-foreground/90 text-base rounded-full group"
+            className="w-full h-14 bg-foreground text-background hover:bg-foreground/90 text-base rounded-full group button-shine shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
           >
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Sending...
+                Sending message...
               </>
             ) : (
               <>
-                Send message
+                <span>Send message</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </>
             )}

@@ -254,7 +254,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     if (cardRef.current) observer.observe(cardRef.current);
@@ -264,31 +264,34 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
   return (
     <div
       ref={cardRef}
-      className={`group relative transition-all duration-700 ${
+      className={`group relative transition-all duration-700 ease-out ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      style={{ transitionDelay: `${index * 120}ms` }}
     >
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 py-12 lg:py-20 border-b border-foreground/10">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 py-12 lg:py-16 border-b border-foreground/10 px-4 -mx-4 lg:px-6 lg:-mx-6 rounded-2xl transition-all duration-500 group-hover:bg-foreground/[0.02] group-hover:border-foreground/20">
         {/* Number */}
-        <div className="shrink-0">
-          <span className="font-mono text-sm text-muted-foreground">{feature.number}</span>
+        <div className="shrink-0 flex items-start">
+          <span className="font-mono text-sm px-2.5 py-1 rounded-md bg-foreground/5 text-muted-foreground group-hover:bg-foreground group-hover:text-background transition-colors duration-300">
+            {feature.number}
+          </span>
         </div>
         
         {/* Content */}
         <div className="flex-1 grid lg:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 className="text-3xl lg:text-4xl font-display mb-4 group-hover:translate-x-2 transition-transform duration-500">
-              {feature.title}
+            <h3 className="text-3xl lg:text-4xl font-display mb-4 group-hover:translate-x-2 transition-transform duration-500 flex items-center gap-3">
+              <span>{feature.title}</span>
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-sans text-muted-foreground font-mono">→</span>
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
               {feature.description}
             </p>
           </div>
           
           {/* Visual */}
           <div className="flex justify-center lg:justify-end">
-            <div className="w-48 h-40 text-foreground">
+            <div className="w-48 h-40 text-foreground group-hover:scale-105 transition-transform duration-500">
               <AnimatedVisual type={feature.visual} />
             </div>
           </div>
@@ -328,7 +331,7 @@ export function FeaturesSection() {
             Capabilities
           </span>
           <h2
-            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
+            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ease-out ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -339,7 +342,7 @@ export function FeaturesSection() {
         </div>
 
         {/* Features List */}
-        <div>
+        <div className="space-y-2">
           {features.map((feature, index) => (
             <FeatureCard key={feature.number} feature={feature} index={index} />
           ))}
