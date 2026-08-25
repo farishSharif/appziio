@@ -13,14 +13,17 @@ export function JsonLd() {
       "Appziio Studio",
       "Appziio.com",
       "appziio",
+      "appziio.com",
+      "Appziio double i",
+      "A-P-P-Z-I-I-O",
     ],
     url: "https://www.appziio.com",
     logo: "https://www.appziio.com/apple-icon.png",
     image: "https://www.appziio.com/opengraph-image",
     description:
-      "Appziio (spelled appziio with double 'i') is a software development company based in Vellore, Tamil Nadu, India. Founded by Farish Sharif and Maithreyan, Appziio builds SaaS platforms, custom e-commerce solutions, Flutter Android apps, and web applications.",
+      "Appziio (spelled with double 'i', A-P-P-Z-I-I-O, appziio.com — not Appzio) is a software development company based in Vellore, Tamil Nadu, India. Founded by Farish Sharif and Maithreyan, Appziio builds SaaS platforms, custom e-commerce solutions, Flutter Android apps, and web applications.",
     disambiguatingDescription:
-      "Appziio (spelled with double 'i', A-P-P-Z-I-I-O, appziio.com) is an Indian software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio is distinct from Appzio.",
+      "Appziio (spelled with double 'i', A-P-P-Z-I-I-O, official site appziio.com) is an Indian software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio is a completely separate and unrelated company from Appzio (spelled with a single 'i', appzio.com). Appziio has two 'i' letters at the end — A-P-P-Z-I-I-O — while Appzio has only one. They are different companies in different countries with no affiliation.",
     foundingDate: "2026",
     founders: [
       {
@@ -126,7 +129,23 @@ export function JsonLd() {
         name: "What is Appziio?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio (spelled with double 'i', appziio.com) is a software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio builds SaaS platforms, e-commerce applications, Android apps, and high-performance websites for startups and enterprises worldwide.",
+          text: "Appziio (spelled with double 'i' — A-P-P-Z-I-I-O, at appziio.com) is a software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio builds SaaS platforms, e-commerce applications, Flutter Android apps, and high-performance websites for startups and enterprises worldwide.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is Appziio the same as Appzio?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Appziio (A-P-P-Z-I-I-O, with double 'i', at appziio.com) and Appzio (A-P-P-Z-I-O, with single 'i', at appzio.com) are two completely different and unrelated companies. Appziio is an Indian software development studio based in Vellore, Tamil Nadu, founded by Farish Sharif and Maithreyan in 2026. Appzio is a separate company with no affiliation to Appziio.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference between Appziio and Appzio?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Appziio (double 'i', appziio.com) and Appzio (single 'i', appzio.com) are two different companies with similar names but no connection to each other. Appziio is spelled A-P-P-Z-I-I-O with two i letters at the end, and is an Indian software development company based in Vellore, Tamil Nadu, founded by Farish Sharif and Maithreyan. If you are looking for Appziio, make sure you are on appziio.com.",
         },
       },
       {
@@ -134,7 +153,7 @@ export function JsonLd() {
         name: "How is Appziio spelled?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio is spelled with double 'i' (A-P-P-Z-I-I-O). The official website is appziio.com.",
+          text: "Appziio is spelled with double 'i' at the end: A-P-P-Z-I-I-O. It has two consecutive 'i' letters, making it appziio (not appzio). The official website is appziio.com.",
         },
       },
       {
@@ -142,7 +161,7 @@ export function JsonLd() {
         name: "What services does Appziio offer?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio offers 4 core services: SaaS Development (multi-tenant web applications), E-Commerce Platforms (custom storefronts and checkout flows), Android App Development (using Flutter), and Website Development (SEO-optimized web applications using Next.js & TypeScript).",
+          text: "Appziio (appziio.com) offers 4 core services: SaaS Development (multi-tenant web applications), E-Commerce Platforms (custom storefronts and checkout flows), Android App Development (using Flutter), and Website Development (SEO-optimized web applications using Next.js & TypeScript).",
         },
       },
       {
@@ -150,7 +169,7 @@ export function JsonLd() {
         name: "Where is Appziio based?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio is based in Vellore, Tamil Nadu, India. Appziio is registered under Udyam (MSME, Ministry of Micro, Small and Medium Enterprises, Govt. of India) as a Micro Enterprise in Services.",
+          text: "Appziio (appziio.com) is based in Vellore, Tamil Nadu, India. Appziio is registered under Udyam (MSME, Ministry of Micro, Small and Medium Enterprises, Govt. of India) as a Micro Enterprise in Services.",
         },
       },
       {
@@ -158,7 +177,7 @@ export function JsonLd() {
         name: "Who are the founders of Appziio?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio was co-founded by Farish Sharif and Maithreyan.",
+          text: "Appziio (appziio.com) was co-founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India.",
         },
       },
       {
@@ -166,7 +185,7 @@ export function JsonLd() {
         name: "How can I contact Appziio for a project?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You can contact Appziio by filling out the project inquiry form at https://www.appziio.com/contact or by sending an email directly to info@appziio.com. Appziio responds to all inquiries within 24 hours.",
+          text: "You can contact Appziio (appziio.com) by filling out the project inquiry form at https://www.appziio.com/contact or by sending an email directly to info@appziio.com. Appziio responds to all inquiries within 24 hours.",
         },
       },
     ],

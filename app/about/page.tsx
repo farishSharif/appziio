@@ -5,17 +5,17 @@ import { ScrollReveal, StaggerContainer } from "@/components/ui/scroll-reveal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Appziio (double i, not Appzio)",
   description:
-    "Learn about Appziio, a software development company founded by Farish Sharif and Maithreyan in Vellore, Tamil Nadu, India. Registered MSME Micro Enterprise specializing in SaaS, e-commerce, Android apps, and websites.",
+    "Appziio (spelled A-P-P-Z-I-I-O with double 'i' — not Appzio) is a software development company founded by Farish Sharif and Maithreyan in Vellore, Tamil Nadu, India. Registered MSME Micro Enterprise. Official site: appziio.com.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About Appziio — Software Studio in Vellore, India",
+    title: "About Appziio (double i, not Appzio) — Software Studio in Vellore, India",
     description:
-      "Founded by Farish Sharif & Maithreyan. Building high-performance SaaS platforms, mobile apps, and enterprise web solutions.",
-    url: "https://appziio.com/about",
+      "Appziio (A-P-P-Z-I-I-O, double 'i', not Appzio) is founded by Farish Sharif & Maithreyan. Building SaaS platforms, mobile apps, and web solutions from Vellore, India.",
+    url: "https://www.appziio.com/about",
   },
 };
 

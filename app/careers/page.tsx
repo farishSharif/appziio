@@ -5,17 +5,17 @@ import { ScrollReveal, StaggerContainer } from "@/components/ui/scroll-reveal";
 import { Mail, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Careers",
+  title: "Careers at Appziio",
   description:
-    "Explore engineering and software development careers at Appziio. Based in Vellore, India — we build SaaS, e-commerce, Android apps, and web applications.",
+    "Explore engineering careers at Appziio (A-P-P-Z-I-I-O, double 'i', not Appzio) — appziio.com. Based in Vellore, India. We build SaaS, e-commerce, Android apps, and web applications.",
   alternates: {
     canonical: "/careers",
   },
   openGraph: {
-    title: "Careers at Appziio — Join Our Software Studio in Vellore, India",
+    title: "Careers at Appziio (not Appzio) — Join Our Software Studio in Vellore, India",
     description:
-      "Join the Appziio engineering team. Work on real software, SaaS platforms, and mobile apps alongside founders Farish Sharif and Maithreyan.",
-    url: "https://appziio.com/careers",
+      "Join the Appziio (appziio.com, double 'i') engineering team. Work on real software, SaaS platforms, and mobile apps alongside founders Farish Sharif and Maithreyan.",
+    url: "https://www.appziio.com/careers",
   },
 };
 

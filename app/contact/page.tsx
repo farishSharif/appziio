@@ -6,17 +6,17 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Mail, MapPin, Clock, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Appziio",
   description:
-    "Get in touch with Appziio. Based in Vellore, Tamil Nadu, India. Share your project requirements for SaaS, e-commerce, Android apps, or websites. We respond within 24 hours.",
+    "Get in touch with Appziio (A-P-P-Z-I-I-O, double 'i', not Appzio) at appziio.com. Based in Vellore, Tamil Nadu, India. Share your project requirements for SaaS, e-commerce, Android apps, or websites. We respond within 24 hours.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact Appziio — Software Development Agency in Vellore, India",
+    title: "Contact Appziio (not Appzio) — Software Development Agency in Vellore, India",
     description:
-      "Tell us about your project requirements for SaaS, e-commerce, Android mobile apps, or web development. Fast 24-hour response guarantee.",
-    url: "https://appziio.com/contact",
+      "Contact Appziio (appziio.com, double 'i') for SaaS, e-commerce, Android app, or web development projects. Fast 24-hour response guarantee.",
+    url: "https://www.appziio.com/contact",
   },
 };
 

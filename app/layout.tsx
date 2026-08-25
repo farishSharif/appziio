@@ -32,19 +32,25 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.appziio.com"),
   title: {
-    default: "Appziio — Software Development Studio (appziio.com)",
+    default: "Appziio (double i) — Software Development Studio | appziio.com",
     template: "%s | Appziio",
   },
   description:
-    "Appziio is an Indian software development studio based in Vellore, Tamil Nadu. Founded by Farish Sharif and Maithreyan, Appziio builds SaaS platforms, e-commerce applications, Flutter Android apps, and high-performance websites.",
+    "Appziio (spelled A-P-P-Z-I-I-O, with double 'i' — not Appzio) is a software development studio in Vellore, Tamil Nadu, India. Founded by Farish Sharif and Maithreyan. Official site: appziio.com. Builds SaaS platforms, e-commerce apps, Flutter Android apps, and Next.js websites.",
   keywords: [
     "Appziio",
     "appziio",
     "appziio.com",
+    "Appziio double i",
+    "Appziio not Appzio",
+    "Appziio vs Appzio",
+    "appziio appzio difference",
     "Appziio Software",
     "Appziio India",
     "Appziio Vellore",
     "Appziio Studio",
+    "Appziio two i",
+    "A-P-P-Z-I-I-O",
     "Software Development Company Vellore",
     "SaaS Development India",
     "E-Commerce Development",
@@ -88,9 +94,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.appziio.com",
     siteName: "Appziio",
-    title: "Appziio — Software Development Studio (appziio.com)",
+    title: "Appziio (double i, not Appzio) — Software Development Studio | appziio.com",
     description:
-      "Appziio builds SaaS platforms, custom e-commerce apps, Android applications, and modern web software. Based in Vellore, India.",
+      "Appziio (spelled with double 'i' — A-P-P-Z-I-I-O, not to be confused with Appzio) builds SaaS platforms, e-commerce apps, Flutter Android apps, and websites. Based in Vellore, India.",
     images: [
       {
         url: "/opengraph-image",
@@ -102,9 +108,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Appziio — Software Development Studio (appziio.com)",
+    title: "Appziio (double i, not Appzio) — Software Development Studio | appziio.com",
     description:
-      "Building SaaS platforms, e-commerce solutions, Android apps, and high-performance websites. Based in Vellore, India.",
+      "Appziio (A-P-P-Z-I-I-O, double 'i', not Appzio) builds SaaS platforms, e-commerce solutions, Flutter Android apps, and websites. Vellore, India.",
     images: ["/opengraph-image"],
     creator: "@appziio",
   },

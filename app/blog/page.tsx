@@ -5,17 +5,17 @@ import { ScrollReveal, StaggerContainer } from "@/components/ui/scroll-reveal";
 import { Sparkles, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Blog — Appziio",
   description:
-    "Engineering insights, SaaS building strategies, mobile app development stories, and technical articles from the Appziio team.",
+    "Engineering insights from Appziio (A-P-P-Z-I-I-O, double 'i', appziio.com — not Appzio). SaaS building, mobile app development stories, and technical articles from Farish Sharif and Maithreyan.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
     title: "Appziio Engineering Blog — Insights on SaaS, Flutter & Next.js",
     description:
-      "Articles and lessons learned by Farish Sharif and Maithreyan on building production software for startups and enterprises.",
-    url: "https://appziio.com/blog",
+      "Articles and lessons learned by Farish Sharif and Maithreyan (Appziio — appziio.com, double 'i') on building production software for startups and enterprises.",
+    url: "https://www.appziio.com/blog",
   },
 };
 
