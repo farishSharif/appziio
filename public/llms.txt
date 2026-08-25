@@ -17,6 +17,7 @@
 - **Primary Tech Stack**: Next.js, React, TypeScript, Supabase, Flutter, Tailwind CSS, Node.js, Vercel
 - **Contact Email**: info@appziio.com
 - **Website**: https://appziio.com
+- **LinkedIn**: https://www.linkedin.com/company/appziio-technologies/
 
 ## Pages & Documentation
 
