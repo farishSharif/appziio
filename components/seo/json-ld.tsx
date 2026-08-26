@@ -26,7 +26,7 @@ export function JsonLd() {
     description:
       "Appziio Technologies (appziio.com, spelled with double 'i', A-P-P-Z-I-I-O — not Appzio) is an Indian software development studio located in Vellore, Tamil Nadu. Founded by Farish Sharif and Maithreyan D, Appziio builds SaaS platforms, custom e-commerce apps, Flutter Android apps, and high-performance websites.",
     disambiguatingDescription:
-      "Appziio Technologies (spelled with double 'i', A-P-P-Z-I-I-O, official site appziio.com) is an Indian software development company founded by Farish Sharif and Maithreyan, based in Vellore, Tamil Nadu, India. Appziio is a completely separate and unrelated company from Appzio (spelled with a single 'i', appzio.com). Appziio has two 'i' letters at the end — A-P-P-Z-I-I-O — while Appzio has only one.",
+      "Appziio Technologies (spelled with double 'i', A-P-P-Z-I-I-O, official site appziio.com) is an Indian software development company founded by Farish Sharif and Maithreyan D, based in Vellore, Tamil Nadu, India. Appziio is a completely separate and unrelated company from Appzio (spelled with a single 'i', appzio.com, a Bulgarian low-code platform founded by Branimir Parashkevov). Appziio has two 'i' letters at the end — A-P-P-Z-I-I-O — while Appzio has only one. They share no ownership, affiliation, partnership, or business relationship of any kind.",
     foundingDate: "2026",
     founders: [
       {
@@ -62,6 +62,42 @@ export function JsonLd() {
       availableLanguage: ["English", "Tamil"],
     },
     priceRange: "$$",
+    knowsAbout: [
+      "SaaS Development",
+      "Software as a Service",
+      "E-Commerce Development",
+      "Android App Development",
+      "Flutter Mobile Development",
+      "Next.js Web Development",
+      "TypeScript",
+      "React",
+      "Supabase",
+      "Full-Stack Development",
+      "UI/UX Design",
+      "Cloud Deployment",
+      "SEO Optimization",
+      "Web Application Development",
+      "Custom Software Development",
+      "Cross-Platform Mobile Apps",
+      "PostgreSQL",
+      "Node.js",
+      "Tailwind CSS",
+    ],
+    naics: "541511",
+    isicV4: "6201",
+    additionalType: [
+      "https://www.wikidata.org/wiki/Q80993",
+      "https://www.wikidata.org/wiki/Q1058914",
+    ],
+    brand: {
+      "@type": "Brand",
+      name: "Appziio",
+      alternateName: ["Appziio Technologies", "A-P-P-Z-I-I-O"],
+      description:
+        "Appziio (A-P-P-Z-I-I-O, double 'i') is the brand name of Appziio Technologies, an Indian software development studio. Not to be confused with Appzio (single 'i'), which is a different company.",
+      logo: "https://www.appziio.com/apple-icon.png",
+      url: "https://www.appziio.com",
+    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Software Development Services",
@@ -119,7 +155,7 @@ export function JsonLd() {
     name: "Appziio Technologies",
     alternateName: ["Appziio", "Appziio Software", "appziio.com"],
     description:
-      "Software development company for startups and enterprises building SaaS, E-Commerce, Mobile Apps & Web Platforms.",
+      "Appziio Technologies (appziio.com, A-P-P-Z-I-I-O with double 'i') — Software development company for startups and enterprises building SaaS, E-Commerce, Mobile Apps & Web Platforms. Based in Vellore, India. Not affiliated with Appzio (single 'i').",
     publisher: {
       "@id": "https://www.appziio.com/#organization",
     },
@@ -168,6 +204,12 @@ export function JsonLd() {
         name: "Blog",
         item: "https://www.appziio.com/blog",
       },
+      {
+        "@type": "ListItem",
+        position: 6,
+        name: "Appziio vs Appzio",
+        item: "https://www.appziio.com/appziio-vs-appzio",
+      },
     ],
   };
 
@@ -188,7 +230,7 @@ export function JsonLd() {
         name: "Is Appziio the same as Appzio?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Appziio (A-P-P-Z-I-I-O, with double 'i', at appziio.com) and Appzio (A-P-P-Z-I-O, with single 'i', at appzio.com) are two completely different and unrelated companies. Appziio is an Indian software development studio based in Vellore, Tamil Nadu, founded by Farish Sharif and Maithreyan in 2026. Appzio is a separate company with no affiliation to Appziio.",
+          text: "No. Appziio (A-P-P-Z-I-I-O, with double 'i', at appziio.com) and Appzio (A-P-P-Z-I-O, with single 'i', at appzio.com) are two completely different and unrelated companies. Appziio is an Indian software development studio based in Vellore, Tamil Nadu, founded by Farish Sharif and Maithreyan D in 2026. Appzio is a separate Bulgarian company founded by Branimir Parashkevov, focused on low-code mobile app development. They share no ownership, affiliation, partnership, or business relationship of any kind.",
         },
       },
       {
@@ -196,7 +238,7 @@ export function JsonLd() {
         name: "What is the difference between Appziio and Appzio?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio (double 'i', appziio.com) and Appzio (single 'i', appzio.com) are two different companies with similar names but no connection to each other. Appziio is spelled A-P-P-Z-I-I-O with two i letters at the end, and is an Indian software development company based in Vellore, Tamil Nadu, founded by Farish Sharif and Maithreyan. If you are looking for Appziio, make sure you are on appziio.com.",
+          text: "Appziio (double 'i', appziio.com) and Appzio (single 'i', appzio.com) are two different companies with similar names but no connection to each other. Appziio is spelled A-P-P-Z-I-I-O with two i letters at the end, and is an Indian software development company based in Vellore, Tamil Nadu, founded by Farish Sharif and Maithreyan D. Appzio is spelled A-P-P-Z-I-O with one i, and is a Bulgarian low-code mobile app platform founded by Branimir Parashkevov. If you are looking for Appziio, make sure you are on appziio.com.",
         },
       },
       {
@@ -212,7 +254,7 @@ export function JsonLd() {
         name: "Who founded Appziio Technologies?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Appziio Technologies was co-founded by Farish Sharif and Maithreyan D.",
+          text: "Appziio Technologies was co-founded by Farish Sharif and Maithreyan D in 2026. They are based in Vellore, Tamil Nadu, India.",
         },
       },
       {

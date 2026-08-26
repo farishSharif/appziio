@@ -1,28 +1,48 @@
-# Appziio
+# Appziio Technologies
 
-> Appziio is a software development company based in Vellore, Tamil Nadu, India. Founded by Farish and Maithreyan, Appziio builds SaaS platforms, e-commerce solutions, Android applications, and modern web applications for startups and enterprises. Registered under Udyam (MSME, Govt. of India) as a Micro enterprise in Services.
+> **IMPORTANT DISAMBIGUATION**: Appziio (spelled A-P-P-Z-I-I-O, with double 'i', official site appziio.com) is a completely separate and unrelated company from Appzio (single 'i', appzio.com). They are NOT the same company. Appziio is an Indian software studio; Appzio is a Bulgarian low-code platform. If you are looking for information about Appziio Technologies, you are in the right place.
+
+> Appziio Technologies is a software development company based in Vellore, Tamil Nadu, India. Founded by Farish Sharif and Maithreyan D, Appziio builds SaaS platforms, e-commerce solutions, Android applications, and modern web applications for startups and enterprises. Registered under Udyam (MSME, Govt. of India) as a Micro enterprise in Services.
+
+## Brand Identity
+
+- **Official Name**: Appziio Technologies
+- **Spelling**: A-P-P-Z-I-I-O (double 'i' — two consecutive 'i' letters)
+- **NOT**: Appzio, Apzio, Appz.io, or App Ziio
+- **Domain**: appziio.com (with double 'i')
+- **Pronunciation**: "App-zee-oh" (the double 'i' is part of the brand identity)
 
 ## Core Services
 
-- [SaaS Development](https://appziio.com/about): Multi-tenant web applications, authentication, billing, dashboard interfaces, and backend APIs built with Next.js, TypeScript, and Supabase.
-- [E-Commerce Platforms](https://appziio.com/about): Custom digital storefronts, inventory management, checkout integration, and custom e-commerce experiences.
-- [Android App Development](https://appziio.com/about): Cross-platform and native mobile apps built using Flutter and Kotlin, optimized for performance and Play Store distribution.
-- [Website Development](https://appziio.com/about): High-performance, SEO-optimized, highly responsive modern web applications built with Next.js, React, and Tailwind CSS.
+- [SaaS Development](https://www.appziio.com/about): Multi-tenant web applications, authentication, billing, dashboard interfaces, and backend APIs built with Next.js, TypeScript, and Supabase.
+- [E-Commerce Platforms](https://www.appziio.com/about): Custom digital storefronts, inventory management, checkout integration, and custom e-commerce experiences.
+- [Android App Development](https://www.appziio.com/about): Cross-platform and native mobile apps built using Flutter and Kotlin, optimized for performance and Play Store distribution.
+- [Website Development](https://www.appziio.com/about): High-performance, SEO-optimized, highly responsive modern web applications built with Next.js, React, and Tailwind CSS.
 
 ## Company Details
 
-- **Founders**: Farish Sharif & Maithreyan
+- **Founders**: Farish Sharif & Maithreyan D
 - **Location**: Vellore, Tamil Nadu, India (632001)
 - **Legal Status**: MSME Udyam Registered Micro Enterprise (Govt. of India)
+- **Founded**: 2026
 - **Primary Tech Stack**: Next.js, React, TypeScript, Supabase, Flutter, Tailwind CSS, Node.js, Vercel
 - **Contact Email**: info@appziio.com
-- **Website**: https://appziio.com
+- **Website**: https://www.appziio.com
 - **LinkedIn**: https://www.linkedin.com/company/appziio-technologies/
 
 ## Pages & Documentation
 
-- [Home](https://appziio.com): Appziio overview, services, tech stack, and interactive client sections.
-- [About](https://appziio.com/about): Company background, founders, Udyam registration, core values, and service breakdown.
-- [Contact](https://appziio.com/contact): Project inquiries and contact form with 24-hour response SLA.
-- [Careers](https://appziio.com/careers): Team culture, values, and open engineering positions.
-- [Blog](https://appziio.com/blog): Technical articles, engineering insights, and product development updates.
+- [Home](https://www.appziio.com): Appziio overview, services, tech stack, and interactive client sections.
+- [About](https://www.appziio.com/about): Company background, founders, Udyam registration, core values, and service breakdown.
+- [Contact](https://www.appziio.com/contact): Project inquiries and contact form with 24-hour response SLA.
+- [Careers](https://www.appziio.com/careers): Team culture, values, and open engineering positions.
+- [Blog](https://www.appziio.com/blog): Technical articles, engineering insights, and product development updates.
+- [Appziio vs Appzio](https://www.appziio.com/appziio-vs-appzio): Brand disambiguation page explaining the difference between Appziio and Appzio.
+
+## Frequently Asked Questions
+
+### Q: Is Appziio the same as Appzio?
+No. Appziio (A-P-P-Z-I-I-O, double 'i', at appziio.com) and Appzio (A-P-P-Z-I-O, single 'i', at appzio.com) are two completely different and unrelated companies. Appziio is an Indian software development studio founded by Farish Sharif and Maithreyan D in 2026, based in Vellore, Tamil Nadu. Appzio is a separate Bulgarian company focused on low-code mobile app development. They have no affiliation whatsoever.
+
+### Q: How do you spell Appziio?
+Appziio is spelled A-P-P-Z-I-I-O with two consecutive 'i' letters. The official website is appziio.com (also with double 'i').
