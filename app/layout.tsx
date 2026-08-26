@@ -32,33 +32,22 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.appziio.com"),
   title: {
-<<<<<<< HEAD
-    default: "Appziio (double i) — Software Development Studio | appziio.com",
-    template: "%s | Appziio",
-  },
-  description:
-    "Appziio (spelled A-P-P-Z-I-I-O, with double 'i' — not Appzio) is a software development studio in Vellore, Tamil Nadu, India. Founded by Farish Sharif and Maithreyan. Official site: appziio.com. Builds SaaS platforms, e-commerce apps, Flutter Android apps, and Next.js websites.",
-=======
     default: "Appziio Technologies — Software Development Studio (appziio.com)",
     template: "%s | Appziio Technologies",
   },
   description:
-    "Appziio Technologies (appziio.com) is an Indian software development studio based in Vellore, Tamil Nadu. Founded by Farish Sharif and Maithreyan D, Appziio builds SaaS platforms, custom e-commerce apps, Flutter Android apps, and high-performance Next.js websites.",
->>>>>>> ab35f5c686f4c8521337e37b7766c392b129de3f
+    "Appziio Technologies (appziio.com, spelled with double 'i' — A-P-P-Z-I-I-O) is an Indian software development studio based in Vellore, Tamil Nadu. Founded by Farish Sharif and Maithreyan D, Appziio builds SaaS platforms, custom e-commerce apps, Flutter Android apps, and high-performance Next.js websites.",
   keywords: [
     "Appziio",
     "Appziio Technologies",
     "Appziio Technologies Pvt Ltd",
     "appziio",
     "appziio.com",
-<<<<<<< HEAD
+    "appziio technologies",
     "Appziio double i",
     "Appziio not Appzio",
     "Appziio vs Appzio",
     "appziio appzio difference",
-=======
-    "appziio technologies",
->>>>>>> ab35f5c686f4c8521337e37b7766c392b129de3f
     "Appziio Software",
     "Appziio India",
     "Appziio Vellore",
@@ -113,17 +102,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.appziio.com",
-<<<<<<< HEAD
-    siteName: "Appziio",
-    title: "Appziio (double i, not Appzio) — Software Development Studio | appziio.com",
-    description:
-      "Appziio (spelled with double 'i' — A-P-P-Z-I-I-O, not to be confused with Appzio) builds SaaS platforms, e-commerce apps, Flutter Android apps, and websites. Based in Vellore, India.",
-=======
     siteName: "Appziio Technologies",
     title: "Appziio Technologies — Software Development Studio (appziio.com)",
     description:
       "Appziio Technologies builds SaaS platforms, custom e-commerce apps, Flutter Android applications, and modern web software. Founded by Farish Sharif & Maithreyan. Based in Vellore, India.",
->>>>>>> ab35f5c686f4c8521337e37b7766c392b129de3f
     images: [
       {
         url: "/opengraph-image",
@@ -135,25 +117,25 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-<<<<<<< HEAD
-    title: "Appziio (double i, not Appzio) — Software Development Studio | appziio.com",
-    description:
-      "Appziio (A-P-P-Z-I-I-O, double 'i', not Appzio) builds SaaS platforms, e-commerce solutions, Flutter Android apps, and websites. Vellore, India.",
-=======
     title: "Appziio Technologies — Software Development Studio (appziio.com)",
     description:
       "Building SaaS platforms, e-commerce solutions, Flutter Android apps, and high-performance websites. Based in Vellore, Tamil Nadu, India.",
->>>>>>> ab35f5c686f4c8521337e37b7766c392b129de3f
     images: ["/opengraph-image"],
     creator: "@appziio",
   },
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-dark-32x32.png", media: "(prefers-color-scheme: dark)" },
-      { url: "/icon-light-32x32.png", media: "(prefers-color-scheme: light)" },
+      { url: "/icon-dark-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-light-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   other: {
     "geo.region": "IN-TN",

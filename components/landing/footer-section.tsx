@@ -23,15 +23,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-<<<<<<< HEAD
   { name: "Twitter / X", href: "https://twitter.com" },
   { name: "GitHub", href: "https://github.com" },
-  { name: "LinkedIn", href: "https://linkedin.com" },
-=======
-  { name: "Twitter", href: "#" },
-  { name: "GitHub", href: "#" },
   { name: "LinkedIn", href: "https://www.linkedin.com/company/appziio-technologies/" },
->>>>>>> ab35f5c686f4c8521337e37b7766c392b129de3f
 ];
 
 export function FooterSection() {
@@ -67,15 +61,9 @@ export function FooterSection() {
                   <a
                     key={link.name}
                     href={link.href}
-<<<<<<< HEAD
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group py-1"
-=======
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
->>>>>>> ab35f5c686f4c8521337e37b7766c392b129de3f
                   >
                     <span>{link.name}</span>
                     <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -111,7 +99,10 @@ export function FooterSection() {
             © 2026 Appziio Software Studio. All rights reserved.
           </p>
 
-<<<<<<< HEAD
+          <p className="text-xs font-mono text-muted-foreground">
+            Founded by <span className="text-foreground font-medium">Farish Sharif</span> & <span className="text-foreground font-medium">Maithreyan D</span>
+          </p>
+
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -126,20 +117,6 @@ export function FooterSection() {
             >
               <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
             </button>
-=======
-          <p className="text-sm text-muted-foreground font-mono">
-            Founded by{" "}
-            <span className="text-foreground font-medium">Farish Sharif</span>
-            {" & "}
-            <span className="text-foreground font-medium">Maithreyan D</span>
-          </p>
-
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              Vellore, Tamil Nadu, India
-            </span>
->>>>>>> ab35f5c686f4c8521337e37b7766c392b129de3f
           </div>
         </div>
       </div>
