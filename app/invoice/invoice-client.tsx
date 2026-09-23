@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { Plus, Trash2, Download, ArrowLeft, FileText, Sparkles, Copy, Check } from "lucide-react";
+import { Plus, Trash2, Download, ArrowLeft, FileText, Sparkles, Copy, Check, Eye, EyeOff, Lock, Phone, LogOut } from "lucide-react";
+
+// ─── Auth constants ────────────────────────────────────────────────────────────
+const AUTH_PHONE = "9342706675";
+const AUTH_PASS  = "9342706675";
+const AUTH_KEY   = "appziio_invoice_auth";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -80,26 +85,227 @@ const defaultData: InvoiceData = {
   upiId: "appziio@hdfc",
 };
 
+// ─── Login Screen ─────────────────────────────────────────────────────────────
+
+function LoginScreen({ onLogin }: { onLogin: () => void }) {
+  const [phone, setPhone] = useState("");
+  const [pass, setPass] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
+  const [shaking, setShaking] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    setTimeout(() => {
+      if (phone === AUTH_PHONE && pass === AUTH_PASS) {
+        if (typeof window !== "undefined") {
+          localStorage.setItem(AUTH_KEY, "true");
+        }
+        onLogin();
+      } else {
+        setLoading(false);
+        setError("Invalid phone number or password.");
+        setShaking(true);
+        setTimeout(() => setShaking(false), 600);
+      }
+    }, 700);
+  };
+
+  return (
+    <div
+      className="min-h-screen bg-background flex items-center justify-center p-6"
+      style={{ fontFamily: "'Instrument Sans', system-ui, sans-serif" }}
+    >
+      {/* Background grid */}
+      <div
+        className="fixed inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+
+      {/* Glow orb */}
+      <div
+        className="fixed pointer-events-none"
+        style={{
+          top: "30%", left: "50%", transform: "translate(-50%, -50%)",
+          width: "500px", height: "500px",
+          background: "radial-gradient(circle, rgba(120,60,220,0.07) 0%, transparent 70%)",
+        }}
+      />
+
+      <div
+        className={`relative w-full max-w-md transition-all duration-150 ${shaking ? "animate-bounce" : ""}`}
+        style={{ animation: shaking ? "shake 0.4s ease" : undefined }}
+      >
+        {/* Card */}
+        <div className="bg-white rounded-2xl border border-foreground/8 shadow-[0_8px_60px_rgba(0,0,0,0.08)] overflow-hidden">
+          {/* Top accent bar */}
+          <div className="h-1 w-full" style={{ background: "linear-gradient(90deg, #7c3aed, #ec4899, #f97316)" }} />
+
+          <div className="p-10">
+            {/* Logo + label */}
+            <div className="flex flex-col items-center mb-10">
+              <Image
+                src="/appziio-logo.png"
+                alt="Appziio Technologies"
+                width={180}
+                height={46}
+                style={{ height: "44px", width: "auto", objectFit: "contain" }}
+                priority
+              />
+              <div className="mt-5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/4 border border-foreground/8">
+                <Lock className="w-3 h-3 text-foreground/40" />
+                <span className="text-xs font-mono text-foreground/40 tracking-wider">INVOICE PORTAL</span>
+              </div>
+            </div>
+
+            <h1 className="text-xl font-semibold text-center mb-1" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>
+              Sign in to continue
+            </h1>
+            <p className="text-sm text-foreground/40 text-center mb-8">
+              Access is restricted to authorized users only.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Phone field */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono uppercase tracking-widest text-foreground/40">
+                  Phone Number
+                </label>
+                <div className="relative">
+                  <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/30" />
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Enter phone number"
+                    required
+                    className="w-full h-11 pl-10 pr-4 rounded-xl border border-foreground/10 bg-background text-sm font-medium focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/8 transition-all placeholder:text-foreground/25"
+                  />
+                </div>
+              </div>
+
+              {/* Password field */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono uppercase tracking-widest text-foreground/40">
+                  Password
+                </label>
+                <div className="relative">
+                  <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/30" />
+                  <input
+                    type={showPass ? "text" : "password"}
+                    value={pass}
+                    onChange={(e) => setPass(e.target.value)}
+                    placeholder="Enter password"
+                    required
+                    className="w-full h-11 pl-10 pr-11 rounded-xl border border-foreground/10 bg-background text-sm font-medium focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/8 transition-all placeholder:text-foreground/25"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPass(!showPass)}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-foreground/30 hover:text-foreground/60 transition-colors"
+                  >
+                    {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Error */}
+              {error && (
+                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-50 border border-red-100">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
+                  <p className="text-xs text-red-500 font-medium">{error}</p>
+                </div>
+              )}
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full h-11 rounded-xl bg-foreground text-background text-sm font-semibold hover:bg-foreground/85 active:scale-[0.98] transition-all duration-150 disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
+                style={{ fontFamily: "inherit" }}
+              >
+                {loading ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                    Verifying…
+                  </>
+                ) : (
+                  "Sign In"
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <p className="text-center text-xs font-mono text-foreground/25 mt-6">
+          appziio.com — Invoice Portal
+        </p>
+      </div>
+
+      <style>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          20% { transform: translateX(-8px); }
+          40% { transform: translateX(8px); }
+          60% { transform: translateX(-6px); }
+          80% { transform: translateX(6px); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export function InvoiceClient() {
+  // null = still checking localStorage (avoid SSR flash)
+  const [authed, setAuthed] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(AUTH_KEY) === "true";
+    setAuthed(stored);
+  }, []);
+
   const [data, setData] = useState<InvoiceData>(defaultData);
   const [copied, setCopied] = useState(false);
 
+  const handleLogout = () => {
+    localStorage.removeItem(AUTH_KEY);
+    setAuthed(false);
+  };
+
+  // Still loading from localStorage — show nothing to avoid flash
+  if (authed === null) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <span className="w-5 h-5 border-2 border-foreground/20 border-t-foreground/60 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!authed) {
+    return <LoginScreen onLogin={() => setAuthed(true)} />;
+  }
+
   const currency = CURRENCIES.find((c) => c.code === data.currency) ?? CURRENCIES[0];
 
-  const update = useCallback(<K extends keyof InvoiceData>(key: K, value: InvoiceData[K]) => {
+  const update = <K extends keyof InvoiceData>(key: K, value: InvoiceData[K]) => {
     setData((prev) => ({ ...prev, [key]: value }));
-  }, []);
+  };
 
-  const updateItem = useCallback((id: string, field: keyof LineItem, value: string | number) => {
+  const updateItem = (id: string, field: keyof LineItem, value: string | number) => {
     setData((prev) => ({
       ...prev,
-      items: prev.items.map((item) =>
-        item.id === id ? { ...item, [field]: value } : item
-      ),
+      items: prev.items.map((item) => item.id === id ? { ...item, [field]: value } : item),
     }));
-  }, []);
+  };
 
   const addItem = () =>
     setData((prev) => ({
@@ -110,29 +316,19 @@ export function InvoiceClient() {
   const removeItem = (id: string) =>
     setData((prev) => ({ ...prev, items: prev.items.filter((i) => i.id !== id) }));
 
-  // ─── Calculations ─────────────────────────────────────────────────────────
-
-  const subtotal = data.items.reduce((s, i) => s + i.quantity * i.rate, 0);
+  const subtotal    = data.items.reduce((s, i) => s + i.quantity * i.rate, 0);
   const discountAmt = (subtotal * data.discount) / 100;
-  const taxable = subtotal - discountAmt;
-  const taxAmt = (taxable * data.taxRate) / 100;
-  const total = taxable + taxAmt;
+  const taxable     = subtotal - discountAmt;
+  const taxAmt      = (taxable * data.taxRate) / 100;
+  const total       = taxable + taxAmt;
 
   const fmt = (n: number) =>
-    new Intl.NumberFormat("en-IN", {
-      style: "currency",
-      currency: data.currency,
-      maximumFractionDigits: 2,
-    }).format(n);
+    new Intl.NumberFormat("en-IN", { style: "currency", currency: data.currency, maximumFractionDigits: 2 }).format(n);
 
   const displayDate = (iso: string) => {
     if (!iso) return "—";
     const [y, m, d] = iso.split("-").map(Number);
-    return new Date(y, m - 1, d).toLocaleDateString("en-IN", {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    });
+    return new Date(y, m - 1, d).toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" });
   };
 
   const handlePrint = () => window.print();
@@ -144,12 +340,10 @@ export function InvoiceClient() {
     });
   };
 
-  // shared props
   const docProps = { data, currency, subtotal, discountAmt, taxable, taxAmt, total, fmt, displayDate, update, updateItem, addItem, removeItem };
 
   return (
     <>
-      {/* ── Global print styles ─────────────────────────────────────────── */}
       <style>{`
         @media print {
           * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
@@ -163,8 +357,9 @@ export function InvoiceClient() {
         }
       `}</style>
 
-      {/* ── Screen: top bar ────────────────────────────────────────────── */}
+      {/* Screen */}
       <div className="no-print min-h-screen bg-background">
+        {/* Top bar */}
         <div className="sticky top-0 z-50 border-b border-foreground/8 bg-background/90 backdrop-blur-xl">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -194,23 +389,27 @@ export function InvoiceClient() {
               <button
                 onClick={handlePrint}
                 className="flex items-center gap-2 px-5 h-9 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-foreground/85 active:scale-95 transition-all group"
-                style={{ fontFamily: "inherit" }}
               >
                 <Download className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" />
                 Download PDF
+              </button>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-3 h-8 rounded-full border border-foreground/10 hover:border-red-200 hover:text-red-500 text-xs font-mono text-foreground/40 transition-all"
+                title="Sign out"
+              >
+                <LogOut className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* ── Screen: editor layout ──────────────────────────────────── */}
+        {/* Editor */}
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-10">
           <div className="grid grid-cols-1 xl:grid-cols-[1fr_460px] gap-8 items-start">
-            {/* Invoice card */}
             <div className="bg-white rounded-2xl shadow-[0_2px_40px_rgba(0,0,0,0.07)] border border-black/5 overflow-hidden">
               <InvoiceDocument {...docProps} />
             </div>
-            {/* Settings panel */}
             <div className="space-y-4">
               <SettingsPanel data={data} update={update} />
             </div>
@@ -218,7 +417,7 @@ export function InvoiceClient() {
         </div>
       </div>
 
-      {/* ── Print-only: full page invoice ──────────────────────────────── */}
+      {/* Print only */}
       <div className="print-only" style={{ background: "#fff", width: "100%", minHeight: "100vh" }}>
         <InvoiceDocument {...docProps} printMode />
       </div>
@@ -256,11 +455,7 @@ function InvoiceDocument({
     opts: { placeholder?: string; cls?: string; type?: string } = {}
   ) => {
     if (printMode) {
-      return (
-        <span className={opts.cls ?? ""} style={{ display: "inline-block" }}>
-          {val || "—"}
-        </span>
-      );
+      return <span className={opts.cls ?? ""} style={{ display: "inline-block" }}>{val || "—"}</span>;
     }
     return (
       <input
@@ -274,45 +469,19 @@ function InvoiceDocument({
   };
 
   return (
-    <div
-      className="text-[#111] p-10 lg:p-14"
-      style={{
-        fontFamily: "'Instrument Sans', 'Inter', system-ui, sans-serif",
-        fontSize: "14px",
-        lineHeight: "1.5",
-        color: "#111",
-        background: "#fff",
-      }}
-    >
-      {/* ── Header: Logo + Invoice title ─────────────────────────────── */}
+    <div className="text-[#111] p-10 lg:p-14" style={{ fontFamily: "'Instrument Sans', 'Inter', system-ui, sans-serif", fontSize: "14px", lineHeight: "1.5", color: "#111", background: "#fff" }}>
+      {/* Header */}
       <div className="flex items-start justify-between mb-12">
-        {/* Real logo */}
         <div className="flex items-center">
-          {/* Use next/image on screen, plain img for print reliability */}
           {printMode ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src="/appziio-logo.png"
-              alt="Appziio Technologies"
-              style={{ height: "52px", width: "auto", objectFit: "contain", display: "block" }}
-            />
+            <img src="/appziio-logo.png" alt="Appziio Technologies" style={{ height: "52px", width: "auto", objectFit: "contain", display: "block" }} />
           ) : (
-            <Image
-              src="/appziio-logo.png"
-              alt="Appziio Technologies"
-              width={220}
-              height={56}
-              style={{ height: "52px", width: "auto", objectFit: "contain" }}
-              priority
-            />
+            <Image src="/appziio-logo.png" alt="Appziio Technologies" width={220} height={56} style={{ height: "52px", width: "auto", objectFit: "contain" }} priority />
           )}
         </div>
-
-        {/* Invoice meta */}
         <div className="text-right">
-          <h1 style={{ fontSize: "36px", fontWeight: 300, letterSpacing: "-0.02em", color: "#111", marginBottom: "12px", fontFamily: "'Instrument Serif', Georgia, serif" }}>
-            Invoice
-          </h1>
+          <h1 style={{ fontSize: "36px", fontWeight: 300, letterSpacing: "-0.02em", color: "#111", marginBottom: "12px", fontFamily: "'Instrument Serif', Georgia, serif" }}>Invoice</h1>
           <div style={{ display: "flex", flexDirection: "column", gap: "4px", alignItems: "flex-end" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", justifyContent: "flex-end" }}>
               <span style={{ fontSize: "11px", fontFamily: "monospace", color: "#999", textTransform: "uppercase", letterSpacing: "0.08em" }}>Number</span>
@@ -320,28 +489,20 @@ function InvoiceDocument({
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", justifyContent: "flex-end" }}>
               <span style={{ fontSize: "11px", fontFamily: "monospace", color: "#999", textTransform: "uppercase", letterSpacing: "0.08em" }}>Issue Date</span>
-              {printMode
-                ? <span className="text-sm">{displayDate(data.issueDate)}</span>
-                : <input type="date" value={data.issueDate} onChange={(e) => update("issueDate", e.target.value)}
-                    className="bg-transparent border-b border-dashed border-[#ddd] hover:border-[#999] focus:border-[#111] focus:outline-none transition-colors text-sm text-right w-36" />
-              }
+              {printMode ? <span className="text-sm">{displayDate(data.issueDate)}</span> : <input type="date" value={data.issueDate} onChange={(e) => update("issueDate", e.target.value)} className="bg-transparent border-b border-dashed border-[#ddd] hover:border-[#999] focus:border-[#111] focus:outline-none transition-colors text-sm text-right w-36" />}
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", justifyContent: "flex-end" }}>
               <span style={{ fontSize: "11px", fontFamily: "monospace", color: "#999", textTransform: "uppercase", letterSpacing: "0.08em" }}>Due Date</span>
-              {printMode
-                ? <span className="text-sm">{displayDate(data.dueDate)}</span>
-                : <input type="date" value={data.dueDate} onChange={(e) => update("dueDate", e.target.value)}
-                    className="bg-transparent border-b border-dashed border-[#ddd] hover:border-[#999] focus:border-[#111] focus:outline-none transition-colors text-sm text-right w-36" />
-              }
+              {printMode ? <span className="text-sm">{displayDate(data.dueDate)}</span> : <input type="date" value={data.dueDate} onChange={(e) => update("dueDate", e.target.value)} className="bg-transparent border-b border-dashed border-[#ddd] hover:border-[#999] focus:border-[#111] focus:outline-none transition-colors text-sm text-right w-36" />}
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── Divider ──────────────────────────────────────────────────── */}
+      {/* Divider */}
       <div style={{ height: "1px", background: "linear-gradient(to right, #111 0%, rgba(17,17,17,0.15) 60%, transparent 100%)", marginBottom: "32px" }} />
 
-      {/* ── From / Bill To ───────────────────────────────────────────── */}
+      {/* From / Bill To */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", marginBottom: "36px" }}>
         <div>
           <p style={{ fontSize: "10px", fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.12em", color: "#999", marginBottom: "14px" }}>From</p>
@@ -363,133 +524,57 @@ function InvoiceDocument({
         </div>
       </div>
 
-      {/* ── Line Items ───────────────────────────────────────────────── */}
+      {/* Line Items */}
       <div style={{ marginBottom: "32px" }}>
-        {/* Table header */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 72px 120px 120px 28px",
-          gap: "12px",
-          paddingBottom: "10px",
-          borderBottom: "2px solid #111",
-          marginBottom: "2px",
-        }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 72px 120px 120px 28px", gap: "12px", paddingBottom: "10px", borderBottom: "2px solid #111", marginBottom: "2px" }}>
           {["Description", "Qty", "Rate", "Amount", ""].map((h, i) => (
-            <p key={i} style={{
-              fontSize: "10px", fontFamily: "monospace", textTransform: "uppercase",
-              letterSpacing: "0.1em", color: "#111", fontWeight: 600,
-              textAlign: i >= 2 ? "right" : i === 1 ? "center" : "left",
-            }}>{h}</p>
+            <p key={i} style={{ fontSize: "10px", fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.1em", color: "#111", fontWeight: 600, textAlign: i >= 2 ? "right" : i === 1 ? "center" : "left" }}>{h}</p>
           ))}
         </div>
-
-        {/* Rows */}
         {data.items.map((item, idx) => (
-          <div
-            key={item.id}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 72px 120px 120px 28px",
-              gap: "12px",
-              padding: "12px 0",
-              borderBottom: "1px solid #f2f2f2",
-              alignItems: "center",
-            }}
-            className="group"
-          >
-            {printMode ? (
-              <span style={{ fontSize: "13px" }}>{item.description || `Item ${idx + 1}`}</span>
-            ) : (
-              <input
-                type="text"
-                value={item.description}
-                onChange={(e) => updateItem(item.id, "description", e.target.value)}
-                placeholder={`Service or product ${idx + 1}`}
-                className="bg-transparent border-b border-dashed border-[#e8e8e8] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors text-sm placeholder:text-[#ccc] w-full"
-              />
+          <div key={item.id} style={{ display: "grid", gridTemplateColumns: "1fr 72px 120px 120px 28px", gap: "12px", padding: "12px 0", borderBottom: "1px solid #f2f2f2", alignItems: "center" }} className="group">
+            {printMode ? <span style={{ fontSize: "13px" }}>{item.description || `Item ${idx + 1}`}</span> : (
+              <input type="text" value={item.description} onChange={(e) => updateItem(item.id, "description", e.target.value)} placeholder={`Service ${idx + 1}`} className="bg-transparent border-b border-dashed border-[#e8e8e8] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors text-sm placeholder:text-[#ccc] w-full" />
             )}
-
             <div style={{ textAlign: "center" }}>
-              {printMode ? (
-                <span style={{ fontSize: "13px" }}>{item.quantity}</span>
-              ) : (
-                <input
-                  type="number"
-                  value={item.quantity}
-                  onChange={(e) => updateItem(item.id, "quantity", Number(e.target.value) || 0)}
-                  className="bg-transparent border-b border-dashed border-[#e8e8e8] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors text-sm text-center w-full"
-                />
+              {printMode ? <span style={{ fontSize: "13px" }}>{item.quantity}</span> : (
+                <input type="number" value={item.quantity} onChange={(e) => updateItem(item.id, "quantity", Number(e.target.value) || 0)} className="bg-transparent border-b border-dashed border-[#e8e8e8] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors text-sm text-center w-full" />
               )}
             </div>
-
             <div style={{ textAlign: "right" }}>
-              {printMode ? (
-                <span style={{ fontSize: "13px" }}>{fmt(item.rate)}</span>
-              ) : (
-                <input
-                  type="number"
-                  value={item.rate}
-                  onChange={(e) => updateItem(item.id, "rate", Number(e.target.value) || 0)}
-                  className="bg-transparent border-b border-dashed border-[#e8e8e8] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors text-sm text-right w-full"
-                />
+              {printMode ? <span style={{ fontSize: "13px" }}>{fmt(item.rate)}</span> : (
+                <input type="number" value={item.rate} onChange={(e) => updateItem(item.id, "rate", Number(e.target.value) || 0)} className="bg-transparent border-b border-dashed border-[#e8e8e8] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors text-sm text-right w-full" />
               )}
             </div>
-
-            <p style={{ fontSize: "13px", fontWeight: 600, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-              {fmt(item.quantity * item.rate)}
-            </p>
-
-            {printMode ? (
-              <div />
-            ) : (
-              <button
-                onClick={() => removeItem(item.id)}
-                className="opacity-0 group-hover:opacity-100 transition-opacity text-[#ddd] hover:text-red-400"
-              >
+            <p style={{ fontSize: "13px", fontWeight: 600, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{fmt(item.quantity * item.rate)}</p>
+            {printMode ? <div /> : (
+              <button onClick={() => removeItem(item.id)} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#ddd] hover:text-red-400">
                 <Trash2 style={{ width: "14px", height: "14px" }} />
               </button>
             )}
           </div>
         ))}
-
-        {/* Add item */}
         {!printMode && (
-          <button
-            onClick={addItem}
-            className="mt-3 flex items-center gap-2 text-xs font-mono text-[#bbb] hover:text-[#111] transition-colors group py-2"
-          >
-            <Plus style={{ width: "13px", height: "13px", transition: "transform 0.2s" }} className="group-hover:rotate-90" />
+          <button onClick={addItem} className="mt-3 flex items-center gap-2 text-xs font-mono text-[#bbb] hover:text-[#111] transition-colors group py-2">
+            <Plus style={{ width: "13px", height: "13px" }} className="group-hover:rotate-90 transition-transform duration-200" />
             Add line item
           </button>
         )}
       </div>
 
-      {/* ── Payment Info + Totals ─────────────────────────────────────── */}
+      {/* Payment + Totals */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", marginTop: "8px" }}>
-        {/* Payment details */}
         <div>
-          <p style={{ fontSize: "10px", fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.12em", color: "#999", marginBottom: "14px" }}>
-            Payment Details
-          </p>
+          <p style={{ fontSize: "10px", fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.12em", color: "#999", marginBottom: "14px" }}>Payment Details</p>
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            {[
-              { label: "Bank", key: "bankName", ph: "Bank Name" },
-              { label: "Account", key: "accountNumber", ph: "Account Number" },
-              { label: "IFSC", key: "ifscCode", ph: "IFSC Code" },
-              { label: "UPI", key: "upiId", ph: "upi@bank" },
-            ].map(({ label, key, ph }) => (
+            {([["Bank", "bankName", "Bank Name"], ["Account", "accountNumber", "Account Number"], ["IFSC", "ifscCode", "IFSC Code"], ["UPI", "upiId", "upi@bank"]] as [string, keyof InvoiceData, string][]).map(([label, key, ph]) => (
               <div key={key} style={{ display: "flex", gap: "12px", alignItems: "baseline" }}>
                 <span style={{ fontSize: "11px", fontFamily: "monospace", color: "#aaa", minWidth: "56px" }}>{label}</span>
-                {field(data[key as keyof InvoiceData] as string, (v) => update(key as keyof InvoiceData, v as never), {
-                  placeholder: ph,
-                  cls: "text-sm font-mono",
-                })}
+                {field(data[key] as string, (v) => update(key, v as never), { placeholder: ph, cls: "text-sm font-mono" })}
               </div>
             ))}
           </div>
         </div>
-
-        {/* Totals */}
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: "13px" }}>
             <span style={{ color: "#888" }}>Subtotal</span>
@@ -510,9 +595,7 @@ function InvoiceDocument({
           <div style={{ height: "1px", background: "#111", margin: "4px 0" }} />
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
             <span style={{ fontWeight: 600, fontSize: "15px" }}>Total Due</span>
-            <span style={{ fontSize: "26px", fontWeight: 600, fontFamily: "'Instrument Serif', Georgia, serif", letterSpacing: "-0.02em" }}>
-              {fmt(total)}
-            </span>
+            <span style={{ fontSize: "26px", fontWeight: 600, fontFamily: "'Instrument Serif', Georgia, serif", letterSpacing: "-0.02em" }}>{fmt(total)}</span>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", color: "#bbb" }}>
             <span>Currency</span>
@@ -521,33 +604,20 @@ function InvoiceDocument({
         </div>
       </div>
 
-      {/* ── Notes ────────────────────────────────────────────────────── */}
+      {/* Notes */}
       {(data.notes || !printMode) && (
         <div style={{ marginTop: "36px", paddingTop: "24px", borderTop: "1px solid #ececec" }}>
           <p style={{ fontSize: "10px", fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.12em", color: "#999", marginBottom: "10px" }}>Notes</p>
           {printMode ? (
             <p style={{ fontSize: "13px", color: "#666", lineHeight: "1.6" }}>{data.notes}</p>
           ) : (
-            <textarea
-              value={data.notes}
-              onChange={(e) => update("notes", e.target.value)}
-              placeholder="Add payment terms, late fee policy, or a thank-you note…"
-              rows={3}
-              className="w-full text-sm text-[#666] leading-relaxed bg-transparent border-b border-dashed border-[#e0e0e0] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors resize-none placeholder:text-[#ccc]"
-            />
+            <textarea value={data.notes} onChange={(e) => update("notes", e.target.value)} placeholder="Add payment terms, late fee policy, or a thank-you note…" rows={3} className="w-full text-sm text-[#666] leading-relaxed bg-transparent border-b border-dashed border-[#e0e0e0] hover:border-[#aaa] focus:border-[#111] focus:outline-none transition-colors resize-none placeholder:text-[#ccc]" />
           )}
         </div>
       )}
 
-      {/* ── Footer strip ──────────────────────────────────────────────── */}
-      <div style={{
-        marginTop: "40px",
-        paddingTop: "20px",
-        borderTop: "1px solid #ececec",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}>
+      {/* Footer */}
+      <div style={{ marginTop: "40px", paddingTop: "20px", borderTop: "1px solid #ececec", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <p style={{ fontSize: "11px", fontFamily: "monospace", color: "#ccc" }}>appziio.com</p>
         <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
           <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
@@ -560,20 +630,13 @@ function InvoiceDocument({
 
 // ─── Settings Panel ───────────────────────────────────────────────────────────
 
-function SettingsPanel({
-  data,
-  update,
-}: {
-  data: InvoiceData;
-  update: <K extends keyof InvoiceData>(key: K, value: InvoiceData[K]) => void;
-}) {
+function SettingsPanel({ data, update }: { data: InvoiceData; update: <K extends keyof InvoiceData>(key: K, value: InvoiceData[K]) => void }) {
   const card = "bg-white border border-foreground/8 rounded-xl p-6 shadow-[0_1px_12px_rgba(0,0,0,0.04)]";
-  const lbl = "text-[10px] font-mono uppercase tracking-widest text-foreground/40 mb-1.5 block";
-  const inp = "w-full h-9 px-3 rounded-lg border border-foreground/10 bg-background/50 text-sm font-medium focus:border-foreground/40 focus:outline-none transition-colors placeholder:text-foreground/25";
+  const lbl  = "text-[10px] font-mono uppercase tracking-widest text-foreground/40 mb-1.5 block";
+  const inp  = "w-full h-9 px-3 rounded-lg border border-foreground/10 bg-background/50 text-sm font-medium focus:border-foreground/40 focus:outline-none transition-colors";
 
   return (
     <>
-      {/* Finance */}
       <div className={card}>
         <h3 className="text-sm font-semibold mb-5 flex items-center gap-2">
           <span className="w-6 h-6 rounded-md bg-foreground/6 flex items-center justify-center text-xs">₹</span>
@@ -583,35 +646,28 @@ function SettingsPanel({
           <div>
             <label className={lbl}>Currency</label>
             <select value={data.currency} onChange={(e) => update("currency", e.target.value)} className={`${inp} cursor-pointer`}>
-              {CURRENCIES.map((c) => (
-                <option key={c.code} value={c.code}>{c.symbol} {c.code} — {c.name}</option>
-              ))}
+              {CURRENCIES.map((c) => <option key={c.code} value={c.code}>{c.symbol} {c.code} — {c.name}</option>)}
             </select>
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className={lbl}>GST / Tax %</label>
-              <input type="number" min="0" max="100" value={data.taxRate}
-                onChange={(e) => update("taxRate", Number(e.target.value))} className={inp} />
+              <input type="number" min="0" max="100" value={data.taxRate} onChange={(e) => update("taxRate", Number(e.target.value))} className={inp} />
             </div>
             <div>
               <label className={lbl}>Discount %</label>
-              <input type="number" min="0" max="100" value={data.discount}
-                onChange={(e) => update("discount", Number(e.target.value))} className={inp} />
+              <input type="number" min="0" max="100" value={data.discount} onChange={(e) => update("discount", Number(e.target.value))} className={inp} />
             </div>
           </div>
           <div>
             <label className={lbl}>Payment Terms</label>
             <select value={data.paymentTerms} onChange={(e) => update("paymentTerms", e.target.value)} className={`${inp} cursor-pointer`}>
-              {["Net 15", "Net 30", "Net 45", "Net 60", "Due on Receipt", "50% Upfront"].map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
+              {["Net 15", "Net 30", "Net 45", "Net 60", "Due on Receipt", "50% Upfront"].map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
           </div>
         </div>
       </div>
 
-      {/* Quick Actions */}
       <div className={card}>
         <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
           <span className="w-6 h-6 rounded-md bg-foreground/6 flex items-center justify-center text-xs">⚡</span>
@@ -619,39 +675,24 @@ function SettingsPanel({
         </h3>
         <div className="space-y-2">
           {[
-            {
-              label: "🔄 Generate new invoice number",
-              action: () => update("invoiceNumber", `INV-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 900) + 100)}`),
-            },
-            {
-              label: "📅 Reset to today + 30 days",
-              action: () => {
-                const t = new Date(); const d = new Date(t); d.setDate(d.getDate() + 30);
-                update("issueDate", t.toISOString().split("T")[0]);
-                update("dueDate", d.toISOString().split("T")[0]);
-              },
-            },
-            {
-              label: "🧹 Clear client info",
-              action: () => { update("toName", ""); update("toEmail", ""); update("toAddress", ""); update("toPhone", ""); },
-            },
+            { label: "🔄 Generate new invoice number", action: () => update("invoiceNumber", `INV-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 900) + 100)}`) },
+            { label: "📅 Reset to today + 30 days", action: () => { const t = new Date(); const d = new Date(t); d.setDate(d.getDate() + 30); update("issueDate", t.toISOString().split("T")[0]); update("dueDate", d.toISOString().split("T")[0]); } },
+            { label: "🧹 Clear client info", action: () => { update("toName", ""); update("toEmail", ""); update("toAddress", ""); update("toPhone", ""); } },
           ].map((btn) => (
-            <button key={btn.label} onClick={btn.action}
-              className="w-full h-9 rounded-lg border border-foreground/8 bg-background/30 hover:bg-foreground/4 text-sm text-foreground/60 hover:text-foreground transition-all text-left px-3 font-medium">
+            <button key={btn.label} onClick={btn.action} className="w-full h-9 rounded-lg border border-foreground/8 bg-background/30 hover:bg-foreground/4 text-sm text-foreground/60 hover:text-foreground transition-all text-left px-3 font-medium">
               {btn.label}
             </button>
           ))}
         </div>
       </div>
 
-      {/* PDF tips */}
       <div className="rounded-xl border border-foreground/6 bg-foreground/[0.02] p-5">
         <p className="text-[10px] font-mono uppercase tracking-widest text-foreground/30 mb-3">PDF Export Tips</p>
         <ul className="space-y-2 text-xs text-foreground/50 leading-relaxed">
           <li>• Click <strong className="text-foreground/70">Download PDF</strong> → choose <em>Save as PDF</em></li>
           <li>• Set margins to <strong className="text-foreground/70">None</strong> for best result</li>
           <li>• Enable <strong className="text-foreground/70">Background graphics</strong> to keep colors</li>
-          <li>• All fields on the invoice are clickable to edit</li>
+          <li>• All invoice fields are clickable to edit</li>
         </ul>
       </div>
     </>
